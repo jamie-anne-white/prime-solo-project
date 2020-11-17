@@ -13,7 +13,7 @@ const Nav = (props) => {
 
   if (props.store.user.id != null) {
     loginLinkData.path = '/user';
-    loginLinkData.text = 'Home/WORKOUT HISTORY';
+    loginLinkData.text = 'Home';
   }
 
   return (
@@ -32,7 +32,15 @@ const Nav = (props) => {
         {props.store.user.id && (
           <>
             <Link className="nav-link" to="/info">
-              Info/LOG WORKOUT
+              Info
+            </Link>
+
+            <Link className="nav-link" to="/add">
+              Add Workout
+            </Link>
+
+            <Link className="nav-link" to="/edit">
+              Edit Workout
             </Link>
 
             {/* Moved location of logout to the end of the nav bar */}
@@ -42,7 +50,7 @@ const Nav = (props) => {
         )}
         {/* Always show this link since the about page is not protected */}
         <Link className="nav-link" to="/about">
-          About/EDIT WORKOUT
+          About
         </Link>
         <LogOutButton className="nav-link" />
 

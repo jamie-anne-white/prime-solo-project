@@ -20,6 +20,10 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
+// New components added into App.js
+import EditWorkout from '../EditWorkout/EditWorkout';
+import AddWorkout from '../AddWorkout/AddWorkout';
+
 import './App.css';
 
 class App extends Component {
@@ -53,6 +57,20 @@ class App extends Component {
               exact
               path="/user"
               component={UserPage}
+            />
+
+            <ProtectedRoute
+              // logged in shows EditWorkout else shows LoginPage
+              exact
+              path="/edit"
+              component={EditWorkout}
+            />
+
+            <ProtectedRoute
+              // logged in shows EditWorkout else shows LoginPage
+              exact
+              path="/add"
+              component={AddWorkout}
             />
 
             <ProtectedRoute
