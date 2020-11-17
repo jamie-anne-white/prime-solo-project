@@ -13,13 +13,13 @@ const Nav = (props) => {
 
   if (props.store.user.id != null) {
     loginLinkData.path = '/user';
-    loginLinkData.text = 'Home';
+    loginLinkData.text = 'Home/WORKOUT HISTORY';
   }
 
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">Whippy Wellness</h2>
       </Link>
       <div className="nav-right">
         <Link className="nav-link" to={loginLinkData.path}>
@@ -32,15 +32,20 @@ const Nav = (props) => {
         {props.store.user.id && (
           <>
             <Link className="nav-link" to="/info">
-              Info Page
+              Info/LOG WORKOUT
             </Link>
-            <LogOutButton className="nav-link" />
+
+            {/* Moved location of logout to the end of the nav bar */}
+            {/* <LogOutButton className="nav-link" /> */}
+
           </>
         )}
         {/* Always show this link since the about page is not protected */}
         <Link className="nav-link" to="/about">
-          About
+          About/EDIT WORKOUT
         </Link>
+        <LogOutButton className="nav-link" />
+
       </div>
     </div>
   );

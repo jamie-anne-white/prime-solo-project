@@ -8,3 +8,16 @@ CREATE TABLE "user" (
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
+
+CREATE TABLE "results" (
+	"results_id" SERIAL PRIMARY KEY,
+	"date" DATE,
+	"workout" BOOLEAN,
+	"workout_rating" INTEGER,
+	"post_workout_rating" INTEGER,
+	"alcohol" BOOLEAN,
+	"food" BOOLEAN,
+	"sleep" BOOLEAN,
+	"mindfullness" BOOLEAN,
+	"overall_status" INTEGER
+	);
