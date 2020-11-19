@@ -29,7 +29,7 @@ class AddWorkout extends Component {
 
   addNewWorkout= (event) => {
     console.log('submit clicked', this.state.addResult);
-    event.preventDefault();
+    // event.preventDefault();
     this.props.dispatch({type: "ADD_RESULTS", payload: this.state.addResult});
     this.props.dispatch({type: "GET_RESULTS"});
 
@@ -49,10 +49,11 @@ class AddWorkout extends Component {
 
     return (
       <>
-      <div className="container">
-     <div>
-    {/* <form onClick={this.addResult}> */}
+    <div className="container">
+      
+    <form onSubmit={this.addNewWorkout}>
 
+    <div>
      <input type="date"/>
     </div>
 
@@ -148,10 +149,10 @@ class AddWorkout extends Component {
         </div>
 
         <div>
-          <button onClick={this.addNewWorkout}> Submit Workout </button>
+          <button type='submit'> Submit Workout </button>
         </div>
 
-        {/* </form> */}
+        </form>
 
       </div>
 
