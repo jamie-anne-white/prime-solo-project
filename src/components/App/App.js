@@ -23,12 +23,14 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 // New components added into App.js
 import EditWorkout from '../EditWorkout/EditWorkout';
 import AddWorkout from '../AddWorkout/AddWorkout';
+// import Results from '../Results/Results'; figuring this out
 
 import './App.css';
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
+    // this.props.dispatch({type: 'FETCH_RESULTS'})
   }
 
   render() {
@@ -72,6 +74,13 @@ class App extends Component {
               path="/add"
               component={AddWorkout}
             />
+
+          {/* <ProtectedRoute
+              // logged in shows Results else shows LoginPage
+              exact
+              path="/results"
+              component={Results}
+            />  */}
 
             <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage

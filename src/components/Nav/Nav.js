@@ -43,6 +43,10 @@ const Nav = (props) => {
               Edit Workout
             </Link>
 
+            {/* <Link className="nav-link" to="/results">
+              Results
+            </Link> */}
+
             {/* Moved location of logout to the end of the nav bar */}
             {/* <LogOutButton className="nav-link" /> */}
 

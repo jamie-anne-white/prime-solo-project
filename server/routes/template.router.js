@@ -5,8 +5,17 @@ const router = express.Router();
 /**
  * GET route template
  */
+
 router.get('/', (req, res) => {
-  // GET route code here
+  // GET results
+  // let queryText = 'SELECT * FROM "results";';
+  // pool.query(queryText).then(result => {
+  //   res.send(result.rows);
+  // })
+  // .catch(error => {
+  //   console.log('error getting results GET', error);
+  //   res.sendStatus(500);
+
 });
 
 /**

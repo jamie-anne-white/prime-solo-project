@@ -15,8 +15,14 @@ class AddWorkout extends Component {
   render () {
 
     return (
+      <>
       <div className="container">
-      <div>
+     
+     <div>
+      
+     <input type="date"/>
+    </div>
+
       <div>
         <p>Did you workout today?</p>
           <select name="workout" id="workout">
@@ -27,26 +33,32 @@ class AddWorkout extends Component {
 
         <div>
         <p>How did your workout feel today?</p>
-        <input type="radio" value="1" name="x" />
-        <input type="radio" value="2" name="x" /> 
-        <input type="radio" value="3" name="x" /> 
-        <input type="radio" value="4" name="x" />
-        <input type="radio" value="5" name="x" /> 
-        <input type="radio" value="6" name="x" /> 
-        <input type="radio" value="7" name="x" /> 
-        <input type="radio" value="8" name="x" />
+        <input type="radio" value="null" label="x"/>
+        <input type="radio" value="1" label="x" />
+        <input type="radio" value="2" label="x" /> 
+        <input type="radio" value="3" label="x" /> 
+        <input type="radio" value="4" label="x" />
+        <input type="radio" value="5" label="x" /> 
+        <input type="radio" value="6" label="x" /> 
+        <input type="radio" value="7" label="x" /> 
+        <input type="radio" value="8" label="x" />
+        <input type="radio" value="9" label="x" />
+        <input type="radio" value="10" label="x" />
         </div>
 
         <div>
         <p>How do you feel now that you've completed your workout?</p>
-        <input type="radio" value="1" name="x" />
-        <input type="radio" value="2" name="x" /> 
-        <input type="radio" value="3" name="x" /> 
-        <input type="radio" value="4" name="x" />
-        <input type="radio" value="5" name="x" /> 
-        <input type="radio" value="6" name="x" /> 
-        <input type="radio" value="7" name="x" /> 
-        <input type="radio" value="8" name="x" />
+        <input type="radio" value="null" label="x" />
+        <input type="radio" value="1" label="x" />
+        <input type="radio" value="2" label="x" /> 
+        <input type="radio" value="3" label="x" /> 
+        <input type="radio" value="4" label="x" />
+        <input type="radio" value="5" label="x" /> 
+        <input type="radio" value="6" label="x" /> 
+        <input type="radio" value="7" label="x" /> 
+        <input type="radio" value="8" label="x" />
+        <input type="radio" value="9" label="x" />
+        <input type="radio" value="10" label="x" />
         </div>
 
         <div>
@@ -83,14 +95,17 @@ class AddWorkout extends Component {
 
         <div>
         <p>How do you feel overall or holistically today?</p>
-        <input type="radio" value="1" name="x" />
-        <input type="radio" value="2" name="x" /> 
-        <input type="radio" value="3" name="x" /> 
-        <input type="radio" value="4" name="x" />
-        <input type="radio" value="5" name="x" /> 
-        <input type="radio" value="6" name="x" /> 
-        <input type="radio" value="7" name="x" /> 
-        <input type="radio" value="8" name="x" />
+        <input type="radio" value="null" label="x" />
+        <input type="radio" value="1" label="x" />
+        <input type="radio" value="2" label="x" /> 
+        <input type="radio" value="3" label="x" /> 
+        <input type="radio" value="4" label="x" />
+        <input type="radio" value="5" label="x" /> 
+        <input type="radio" value="6" label="x" /> 
+        <input type="radio" value="7" label="x" /> 
+        <input type="radio" value="8" label="x" />
+        <input type="radio" value="9" label="x" />
+        <input type="radio" value="10" label="x" />
         </div>
 
         <div>
@@ -99,7 +114,7 @@ class AddWorkout extends Component {
 
       </div>
 
-      </div>
+      </>
 
     )
   }
