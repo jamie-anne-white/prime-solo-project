@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
+
+
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -7,43 +11,71 @@ import React, { Component } from 'react';
 
 class AddWorkout extends Component {
 
-  handleClick = () => {
-    console.log('submit clicked');
+  state = {
+    addResult: { 
+      user_id: 1,
+      // date: '',
+      workout: true,
+      workout_rating: 0,
+      post_workout_rating: 0,
+      alcohol: true,
+      food: true,
+      sleep: true,
+      mindfullness: true,
+      overall_status: 0
 
   }
+  }
+
+  handleClick = () => {
+    console.log('submit clicked', this.state.addResult);
+    this.props.dispatch({type: "ADD_RESULTS", payload: this.state.addResult});
+    // this.props.dispatch({type: "GET_RESULTS"});
+
+  }
+
+  handleChange = (event, propertyName) => {
+    this.setState({
+        addResult:{
+      ...this.state.addResult,
+      [propertyName]: event.target.value,
+      }
+    })
+  }
+
 
   render () {
 
     return (
       <>
       <div className="container">
-     
+      {/* <form onClick={this.addResult}> */}
+
      <div>
-      
      <input type="date"/>
     </div>
 
       <div>
         <p>Did you workout today?</p>
           <select name="workout" id="workout">
-              <option value="x">Yes</option>
-              <option value="y">No</option>
+              <option value="1">Yes</option>
+              <option value="2">No</option>
           </select>
         </div>
 
         <div>
         <p>How did your workout feel today?</p>
-        <input type="radio" value="null" label="x"/>
-        <input type="radio" value="1" label="x" />
-        <input type="radio" value="2" label="x" /> 
-        <input type="radio" value="3" label="x" /> 
-        <input type="radio" value="4" label="x" />
-        <input type="radio" value="5" label="x" /> 
-        <input type="radio" value="6" label="x" /> 
-        <input type="radio" value="7" label="x" /> 
-        <input type="radio" value="8" label="x" />
-        <input type="radio" value="9" label="x" />
-        <input type="radio" value="10" label="x" />
+        <input type="radio" value="null" label="workout_rating"/>
+        <input type="radio" value="1" label="workout_rating" />
+        <input type="radio" value="2" label="workout_rating" /> 
+        <input type="radio" value="3" label="workout_rating" /> 
+        <input type="radio" value="4" label="workout_rating" />
+        <input type="radio" value="5" label="workout_rating" /> 
+        <input type="radio" value="6" label="workout_rating" /> 
+        <input type="radio" value="7" label="workout_rating" /> 
+        <input type="radio" value="8" label="workout_rating" />
+        <input type="radio" value="9" label="workout_rating" />
+        <input type="radio" value="10" label="workout_rating" />
         </div>
 
         <div>
@@ -112,6 +144,8 @@ class AddWorkout extends Component {
           <button onClick={this.handleClick}> Submit Workout </button>
         </div>
 
+        {/* </form> */}
+
       </div>
 
       </>
@@ -120,4 +154,4 @@ class AddWorkout extends Component {
   }
 }
 
-export default AddWorkout;
+export default connect(mapStoreToProps)(AddWorkout);

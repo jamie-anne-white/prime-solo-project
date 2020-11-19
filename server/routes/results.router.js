@@ -8,7 +8,6 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     // console.log('helloo from Results get');
-  
     const queryText = `SELECT * FROM "results";`;
     pool.query(queryText).then((result) => 
     res.send(result.rows)).catch((error) => {
@@ -23,6 +22,8 @@ router.get('/', (req, res) => {
  */
 
 // router.post('/', (req, res) => {
+//       console.log('POST');
+
 //   console.log('in Post results', req.body);
 //   const queryText = `INSERT INTO "results" (date, workout, workout_rating, post_workout_rating, alcohol, food, sleep, mindfullness, overall_status, "user_id")
 //   VALUES ($1, $2, $3, $4, 5$, $6, $7, $8, $9);`
