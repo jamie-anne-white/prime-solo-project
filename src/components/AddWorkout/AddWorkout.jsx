@@ -130,8 +130,8 @@ class AddWorkout extends Component {
 
         <div>
         <p>Did you consume alcohol within 24 hours of this workout?</p>
-          <select name="alcohol" id="alcohol" onChange={(event) => this.handleChange(event, 'alcohol')}>
-              {/* <option disabled selected value> -- select an option -- </option> */}
+          <select required name="alcohol" id="alcohol" onChange={(event) => this.handleChange(event, 'alcohol')}>
+              <option value=''> -- select an option -- </option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
 
@@ -140,8 +140,8 @@ class AddWorkout extends Component {
 
         <div>
         <p>Have you met your nutrition goals within the past 24 hours of this workout?</p>
-          <select name="food" id="food" onChange={(event) => this.handleChange(event, 'food')}>
-             {/* <option disabled selected value> -- select an option -- </option> */}
+          <select required name="food" id="food" onChange={(event) => this.handleChange(event, 'food')}>
+              <option value=''> -- select an option -- </option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
           </select>
@@ -149,8 +149,8 @@ class AddWorkout extends Component {
 
         <div>
         <p>Did you meet your sleep goal within the past 24 hours leading up to this workout?</p>
-          <select name="sleep" id="sleep" onChange={(event) => this.handleChange(event, 'sleep')}>
-              {/* <option disabled selected value> -- select an option -- </option> */}
+          <select required name="sleep" id="sleep" onChange={(event) => this.handleChange(event, 'sleep')}>
+              <option value=''> -- select an option -- </option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
           </select>
@@ -158,9 +158,9 @@ class AddWorkout extends Component {
 
         <div>
         <p>Have you practiced mindfullness and/or meditation in the past 24 hours?</p>
-          <select name="mindfullness" id="mindfullness" onChange={(event) => this.handleChange(event, 'mindfullness')}>
-              {/* <option disabled selected value> -- select an option -- </option> */}
-              <option value="Yes">Yes</option>
+              <select required name="mindfullness" id="mindfullness" onChange={(event) => this.handleChange(event, 'mindfullness')}>
+              <option value=''> -- select an option -- </option>
+  v           <option value="Yes">Yes</option>
               <option value="No">No</option>
           </select>
         </div>

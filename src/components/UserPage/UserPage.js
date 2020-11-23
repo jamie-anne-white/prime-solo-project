@@ -80,8 +80,11 @@ class UserPage extends Component {
               {/* need to set up delete router, etc */}
 
               <td><button onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</button></td>
-              
-                <td><button onClick={()=> this.delete(results)}>Delete</button></td>            
+              {results.user_id === this.props.store.user.id ?
+                <td><button onClick={()=> this.delete(results)}>Delete</button></td> 
+                :
+                <td></td>
+              }
 
 
             </tr>

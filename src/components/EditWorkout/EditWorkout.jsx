@@ -42,9 +42,11 @@ state = {
   }
 
   handleChange = (event, propertyName) => {
+    event.preventDefault();
     this.setState({
         ...this.state,
         [propertyName]: event.target.value,
+
     })
 }
 
@@ -73,7 +75,7 @@ state = {
         <section>
         <table>
           <thead>
-            <tr>git 
+            <tr>
               <th> Date </th>
               <th> Did you workout? </th>
               <th> Workout Rating </th>
@@ -103,8 +105,9 @@ state = {
               </select>
             </td>
 
-            <td><input type="number" min="1" max="5" defaultValue={results.workout_rating} onChange={(event) => this.handleChange(event, 'workout_rating')} /> </td>
-            <td><input type="number" min="1" max="5" defaultValue={results.post_workout_rating} onChange={(event) => this.handleChange(event, 'post_workout_rating')} /> </td>
+            <td><input type="number" min="1" max="6" defaultValue={results.workout_rating} onChange={(event) => this.handleChange(event, 'workout_rating')} /> </td>
+
+            <td><input type="number" min="1" max="6" defaultValue={results.post_workout_rating} onChange={(event) => this.handleChange(event, 'post_workout_rating')} /> </td>
             
             <td>
             <select name="alcohol" id="alcohol" onChange={(event) => this.handleChange(event, 'alcohol')}>
@@ -139,7 +142,7 @@ state = {
               </select>
             </td>
 
-            <td><input type="number" min="1" max="5" defaultValue={results.overall_status} onChange={(event) => this.handleChange(event, 'overall_status')}  /> </td>
+            <td><input type="number" min="1" max="6" defaultValue={results.overall_status} onChange={(event) => this.handleChange(event, 'overall_status')}  /> </td>
             <td><button onClick ={this.handleSave}> Save </button></td>
           </tr>
 
