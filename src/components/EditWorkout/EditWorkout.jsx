@@ -96,6 +96,8 @@ state = {
 
         return(
           <tr key={results.user_id}>
+            <td></td>
+
             <td>
               <select name="workout" id="workout" defaultValue={results.workout} onChange={(event) => this.handleChange(event, 'workout')}>
                 <option value=''> -- select an option -- </option>
@@ -142,6 +144,11 @@ state = {
             </td>
 
             <td><input type="number" min="1" max="6" defaultValue={results.overall_status} onChange={(event) => this.handleChange(event, 'overall_status')}  /> </td>
+            
+            
+            
+            
+            
             <td><button onClick ={this.handleSave}> Save </button></td>
           </tr>
 
