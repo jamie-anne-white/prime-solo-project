@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 
 
 import './EditWorkout.css';
+import swal from 'sweetalert';
+
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -63,6 +65,10 @@ state = {
   handleSave = () => {
     console.log('this clicks', this.state, this);
     this.props.dispatch({type: `EDIT_RESULTS`, payload: this.state})
+    swal({
+      title: "Your workout has been updated!",
+      icon: "success",
+    });
     this.props.history.push('/')
   }
 

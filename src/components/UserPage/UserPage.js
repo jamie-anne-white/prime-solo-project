@@ -32,6 +32,24 @@ class UserPage extends Component {
   delete = (results) => {
     console.log('deleted', results.id);
     this.props.dispatch({type: "DELETE_RESULTS", payload: results.id})
+    
+    swal({
+      title: "Are you sure?",
+      text: "this cannot be undone!", 
+      icon: "warning",
+      buttons: true,
+      dangerMode: true})
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Your workout has been deleted!", {
+            icon: "success",
+          });
+        } else {
+          swal("Your workout is safe!")
+        }
+      })
+
+
   }
 
 
@@ -74,20 +92,67 @@ class UserPage extends Component {
         <tbody>
           {this.props.store.results.map(results=>(
             <tr key={results.user_id}>
+              {results.user_id=== this.props.store.user.id ?
               <td className="date">{results.date}</td>
+              :
+              <td></td>
+
+              }
+
+              {results.user_id === this.props.store.user.id ?
               <td className="workout">{results.workout}</td>
+              :
+              <td></td>
+
+              }
+
+              {results.user_id === this.props.store.user.id ?
               <td className="workout_rating">{results.workout_rating}</td>
+              :
+              <td></td>
+              }
+
+              {results.user_id=== this.props.store.user.id ?
               <td className="post_workout_rating">{results.post_workout_rating}</td>
+              :
+              <td></td>
+              }
+
+              {results.user_id === this.props.store.user.id ?
               <td className="alcohol">{results.alcohol}</td>
-              <td className ="food">{results.food}</td>
+              :
+              <td></td>
+              }
+              {results.user_id === this.props.store.user.id ?
+              <td className="food">{results.food}</td>
+              :
+              <td></td>
+              }
+
+              {results.user_id === this.props.store.user.id ?
               <td className="sleep">{results.sleep}</td>
+              :
+              <td></td>
+              } 
+
+              {results.user_id === this.props.store.user.id ?
               <td className="mindfullness">{results.mindfullness}</td>
+              :
+              <td></td>
+              } 
+
+              {results.user_id === this.props.store.user.id ?
               <td className="overall_status">{results.overall_status}</td>
+              :
+              <td></td>
+              } 
 
-              {/* need to set up edit to link to edit page */}
-              {/* need to set up delete router, etc */}
-
+              {results.user_id === this.props.store.user.id ?
               <td><Button variant="contained" color="primary" onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</Button></td>
+
+              :
+              <td></td>
+              }
               
               {results.user_id === this.props.store.user.id ? 
               <td><Button variant="contained" color="secondary" onClick={()=> this.delete(results)}>Delete</Button></td>

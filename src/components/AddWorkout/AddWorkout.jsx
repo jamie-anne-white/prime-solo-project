@@ -11,6 +11,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 // import Select from '@material-ui/core/Select';
+import swal from 'sweetalert';
+
 
 
 
@@ -26,7 +28,7 @@ class AddWorkout extends Component {
 
   state = {
     addResult: { 
-      user_id: 1,
+      user_id: this.props.store.user_id,
       date: "2020-01-12",
       workout: '',
       workout_rating: 0,
@@ -46,21 +48,13 @@ class AddWorkout extends Component {
     // event.preventDefault();
     this.props.dispatch({type: "ADD_RESULTS", payload: this.state.addResult});
     this.props.dispatch({type: "GET_RESULTS"});
+    swal({
+      title: "Thank you!",
+      text: "Your workout has been saved!",
+      icon: "success",
+    });
+
     this.props.history.push('/')
-
-    // this.setState({
-    //   user_id: 1,
-    //   // date: '',
-    //   workout: '',
-    //   workout_rating: 0,
-    //   post_workout_rating: 0,
-    //   alcohol: '',
-    //   food: '',
-    //   sleep: '',
-    //   mindfullness: '',
-    //   overall_status: 0
-
-    // })
 
   }
 
@@ -94,6 +88,8 @@ class AddWorkout extends Component {
     return (
       <>
     <div className="container">
+
+      
       
     <form onSubmit={this.addNewWorkout}>
 
