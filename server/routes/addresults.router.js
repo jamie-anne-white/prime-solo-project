@@ -11,7 +11,7 @@ const router = express.Router();
    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`
   //  JOIN "user" ON "user"."id" = "results"."user_id"; tried having this in SQL
 
-   pool.query(queryText, [req.body.workout,req.body.workout_rating, req.body.post_workout_rating, req.body.alcohol, req.body.food, req.body.sleep, req.body.mindfullness, req.body.overall_status, req.user.id ])
+   pool.query(queryText, [req.body.workout,req.body.workout_rating, req.body.post_workout_rating, req.body.alcohol, req.body.food, req.body.sleep, req.body.mindfullness, req.body.overall_status, req.user_id ])
    .then(result => {
      res.sendStatus(201);
    }).catch(error => {

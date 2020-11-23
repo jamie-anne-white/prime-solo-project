@@ -79,7 +79,7 @@ class UserPage extends Component {
               {/* need to set up edit to link to edit page */}
               {/* need to set up delete router, etc */}
 
-              <td><button onClick={() => this.props.history.push('/edit')}>Edit</button></td>
+              <td><button onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</button></td>
               
                 <td><button onClick={()=> this.delete(results)}>Delete</button></td>            
 

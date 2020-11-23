@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-
+// import Radio from '@material-ui/core/Radio';
+// import RadioGroup from '@material-ui/core/RadioGroup';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import FormControl from '@material-ui/core/FormControl';
 
 
 // This is one of our simplest components
@@ -18,11 +21,13 @@ class AddWorkout extends Component {
       workout: '',
       workout_rating: 0,
       post_workout_rating: 0,
-      alcohol: '',
-      food: '',
-      sleep: '',
-      mindfullness: '',
+      alcohol: 'Yes',
+      food: 'Yes',
+      sleep: 'Yes',
+      mindfullness: 'Yes',
       overall_status: 0
+
+      
 
   }
   }
@@ -32,6 +37,19 @@ class AddWorkout extends Component {
     // event.preventDefault();
     this.props.dispatch({type: "ADD_RESULTS", payload: this.state.addResult});
     this.props.dispatch({type: "GET_RESULTS"});
+    // this.setState({
+    //   user_id: 1,
+    //   // date: '',
+    //   workout: '',
+    //   workout_rating: 0,
+    //   post_workout_rating: 0,
+    //   alcohol: '',
+    //   food: '',
+    //   sleep: '',
+    //   mindfullness: '',
+    //   overall_status: 0
+
+    // })
 
   }
 
@@ -43,6 +61,19 @@ class AddWorkout extends Component {
       }
     })
   }
+
+  // handleOptionChange = () => {
+  //   if (document.getElementById('completedStatus').checked)
+  //   {
+  //   this.setState({
+  //     workout: {
+  //     selectedOption: changeEvent.target.value
+  //     is_complete: document.getElementById('completedStatus').value= "yes"
+  //   }
+  //   });
+  // };
+
+  // console.log('completed status', this.state.workout.is_complete);
 
 
   render () {
@@ -59,47 +90,48 @@ class AddWorkout extends Component {
 
       <div>
         <p>Did you workout today?</p>
-          <select name="workout" id="workout" onChange={(event) => this.handleChange(event, 'workout')} >
-              <option disabled selected value> -- select an option -- </option>
-              <option required value="Yes">Yes</option>
-              <option required value="No">No</option>
+          <select required name="workout" id="workout" onChange={this.handleChange} >
+              <option value=''> -- select an option -- </option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
           </select>
         </div>
 
         <div>
         <p>How did your workout feel today?</p>
-        <input type="radio" value="null" label="workout_rating"/>
-        <input type="radio" value="1" label="workout_rating" />
-        <input type="radio" value="2" label="workout_rating" /> 
-        <input type="radio" value="3" label="workout_rating" /> 
-        <input type="radio" value="4" label="workout_rating" />
-        <input type="radio" value="5" label="workout_rating" /> 
-        <input type="radio" value="6" label="workout_rating" /> 
-        <input type="radio" value="7" label="workout_rating" /> 
-        <input type="radio" value="8" label="workout_rating" />
-        <input type="radio" value="9" label="workout_rating" />
-        <input type="radio" value="10" label="workout_rating" />
+        
+        {/* <FormControl component="fieldset" onChange={(event => this.setState({workout_rating: event.target.value}))}>
+        <RadioGroup>
+        <FormControlLabel value="1" control={<Radio />} label="1" />
+
+
+        </RadioGroup>
+        </FormControl> */}
+
+        <input type="radio" value="0" label="workout_rating" onChange={(event) => this.handleChange(event, 'workout_rating')}/>
+        <input type="radio" value="1" label="workout_rating" onChange={(event) => this.handleChange(event, 'workout_rating')}/>
+        <input type="radio" value="2" label="workout_rating" onChange={(event) => this.handleChange(event, 'workout_rating')}/> 
+        <input type="radio" value="3" label="workout_rating" onChange={(event) => this.handleChange(event, 'workout_rating')}/> 
+        <input type="radio" value="4" label="workout_rating" onChange={(event) => this.handleChange(event, 'workout_rating')}/>
+        <input type="radio" value="5" label="workout_rating" onChange={(event) => this.handleChange(event, 'workout_rating')}/> 
+        
         </div>
+
 
         <div>
         <p>How do you feel now that you've completed your workout?</p>
-        <input type="radio" value="null" label="x" />
-        <input type="radio" value="1" label="x" />
-        <input type="radio" value="2" label="x" /> 
-        <input type="radio" value="3" label="x" /> 
-        <input type="radio" value="4" label="x" />
-        <input type="radio" value="5" label="x" /> 
-        <input type="radio" value="6" label="x" /> 
-        <input type="radio" value="7" label="x" /> 
-        <input type="radio" value="8" label="x" />
-        <input type="radio" value="9" label="x" />
-        <input type="radio" value="10" label="x" />
+        <input type="radio" value="1" label="post_workout_rating"  onChange={(event) => this.handleChange(event, 'post_workout_rating')}/>
+        <input type="radio" value="1" label="post_workout_rating"  onChange={(event) => this.handleChange(event, 'post_workout_rating')}/>
+        <input type="radio" value="2" label="post_workout_rating" onChange={(event) => this.handleChange(event, 'post_workout_rating')}/> 
+        <input type="radio" value="3" label="post_workout_rating" onChange={(event) => this.handleChange(event, 'post_workout_rating')}/> 
+        <input type="radio" value="4" label="post_workout_rating" onChange={(event) => this.handleChange(event, 'post_workout_rating')}/>
+        <input type="radio" value="5" label="post_workout_rating" onChange={(event) => this.handleChange(event, 'post_workout_rating')}/> 
         </div>
 
         <div>
         <p>Did you consume alcohol within 24 hours of this workout?</p>
           <select name="alcohol" id="alcohol" onChange={(event) => this.handleChange(event, 'alcohol')}>
-              <option disabled selected value> -- select an option -- </option>
+              {/* <option disabled selected value> -- select an option -- </option> */}
               <option value="Yes">Yes</option>
               <option value="No">No</option>
 
@@ -109,7 +141,7 @@ class AddWorkout extends Component {
         <div>
         <p>Have you met your nutrition goals within the past 24 hours of this workout?</p>
           <select name="food" id="food" onChange={(event) => this.handleChange(event, 'food')}>
-             <option disabled selected value> -- select an option -- </option>
+             {/* <option disabled selected value> -- select an option -- </option> */}
               <option value="Yes">Yes</option>
               <option value="No">No</option>
           </select>
@@ -118,7 +150,7 @@ class AddWorkout extends Component {
         <div>
         <p>Did you meet your sleep goal within the past 24 hours leading up to this workout?</p>
           <select name="sleep" id="sleep" onChange={(event) => this.handleChange(event, 'sleep')}>
-              <option disabled selected value> -- select an option -- </option>
+              {/* <option disabled selected value> -- select an option -- </option> */}
               <option value="Yes">Yes</option>
               <option value="No">No</option>
           </select>
@@ -127,7 +159,7 @@ class AddWorkout extends Component {
         <div>
         <p>Have you practiced mindfullness and/or meditation in the past 24 hours?</p>
           <select name="mindfullness" id="mindfullness" onChange={(event) => this.handleChange(event, 'mindfullness')}>
-              <option disabled selected value> -- select an option -- </option>
+              {/* <option disabled selected value> -- select an option -- </option> */}
               <option value="Yes">Yes</option>
               <option value="No">No</option>
           </select>
@@ -135,17 +167,13 @@ class AddWorkout extends Component {
 
         <div>
         <p>How do you feel overall or holistically today?</p>
-        <input type="radio" value="null" label="x" />
-        <input type="radio" value="1" label="x" />
-        <input type="radio" value="2" label="x" /> 
-        <input type="radio" value="3" label="x" /> 
-        <input type="radio" value="4" label="x" />
-        <input type="radio" value="5" label="x" /> 
-        <input type="radio" value="6" label="x" /> 
-        <input type="radio" value="7" label="x" /> 
-        <input type="radio" value="8" label="x" />
-        <input type="radio" value="9" label="x" />
-        <input type="radio" value="10" label="x" />
+        <input type="radio" value="1" label="overall_status" onChange={(event) => this.handleChange(event, 'overall_status')} />
+        <input type="radio" value="2" label="overall_status" onChange={(event) => this.handleChange(event, 'overall_status')}/> 
+        <input type="radio" value="3" label="overall_status" onChange={(event) => this.handleChange(event, 'overall_status')}/> 
+        <input type="radio" value="4" label="overall_status" onChange={(event) => this.handleChange(event, 'overall_status')}/>
+        <input type="radio" value="5" label="overall_status" onChange={(event) => this.handleChange(event, 'overall_status')}/> 
+        <input type="radio" value="6" label="overall_status" onChange={(event) => this.handleChange(event, 'overall_status')}/> 
+
         </div>
 
         <div>

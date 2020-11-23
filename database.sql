@@ -21,3 +21,10 @@ CREATE TABLE "results" (
 	"mindfullness" BOOLEAN,
 	"overall_status" INTEGER
 	);
+
+SELECT * FROM "results"
+JOIN "user" ON "user"."id" = "results"."user_id";
+
+UPDATE "results"
+SET "date" = $1, "workout" = $2, "workout_rating" = $3, "post_workout_rating" = $4, "alcohol" = $5, "food" = $6, "sleep" = $7, "mindfullness" = $8, "overall_status" = $9 
+WHERE "user_id" = $10;
