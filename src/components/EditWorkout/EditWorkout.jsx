@@ -96,9 +96,8 @@ state = {
 
         return(
           <tr key={results.user_id}>
-            <td>{results.date}</td>
             <td>
-              <select name="workout" id="workout" onChange={(event) => this.handleChange(event, 'workout')}>
+              <select name="workout" id="workout" defaultValue={results.workout} onChange={(event) => this.handleChange(event, 'workout')}>
                 <option value=''> -- select an option -- </option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>

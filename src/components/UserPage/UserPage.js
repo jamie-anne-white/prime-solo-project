@@ -65,7 +65,7 @@ class UserPage extends Component {
         </thead>
         <tbody>
           {this.props.store.results.map(results=>(
-            <tr key={results.id}>
+            <tr key={results.user_id}>
               <td>{results.date}</td>
               <td>{results.workout}</td>
               <td>{results.workout_rating}</td>
@@ -80,11 +80,7 @@ class UserPage extends Component {
               {/* need to set up delete router, etc */}
 
               <td><button onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</button></td>
-              {results.user_id === this.props.store.user.id ?
-                <td><button onClick={()=> this.delete(results)}>Delete</button></td> 
-                :
-                <td></td>
-              }
+              <td><button onClick={()=> this.delete(results)}>Delete</button></td>            
 
 
             </tr>

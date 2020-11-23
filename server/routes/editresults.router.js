@@ -51,8 +51,8 @@ router.put('/', (req, res) => {
     "food" = $5, 
     "sleep" = $6, 
     "mindfullness" = $7, 
-    "overall_status" = $8
-    WHERE "user_id" = $9 AND "id" = $10;`;
+    "overall_status" = $8,
+    AND "user_id" = $9 WHERE "id" = $10;`;
     pool.query(queryText, 
         [req.body.workout,
             req.body.workout_rating, 

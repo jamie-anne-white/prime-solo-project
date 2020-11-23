@@ -90,7 +90,7 @@ class AddWorkout extends Component {
 
       <div>
         <p>Did you workout today?</p>
-          <select required name="workout" id="workout" onChange={this.handleChange} >
+          <select required name="workout" id="workout" onChange={(event) => this.handleChange(event,'workout')} >
               <option value=''> -- select an option -- </option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
