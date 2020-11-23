@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import Button from '@material-ui/core/Button';
+
 
 
 import './EditWorkout.css';
@@ -69,11 +71,11 @@ state = {
     return (
       <div className="container">
       <div>
-        <p>This is my edit workout form</p>
+
         <p>EDIT WORKOUT FORM</p>
         {/* {JSON.stringify(this.props.store.edit)} */}
         <section>
-        <table class="center">
+        <table className="edit-table">
           <thead>
             <tr>
               <th> Date </th>
@@ -111,7 +113,7 @@ state = {
             <td><input type="number" min="1" max="6" defaultValue={results.post_workout_rating} onChange={(event) => this.handleChange(event, 'post_workout_rating')} /> </td>
             
             <td>
-            <select name="alcohol" id="alcohol" onChange={(event) => this.handleChange(event, 'alcohol')}>
+            <select name="alcohol" id="alcohol" defaultValue={results.alcohol} onChange={(event) => this.handleChange(event, 'alcohol')}>
             <option value=''> -- select an option -- </option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -120,7 +122,7 @@ state = {
 
 
             <td>
-              <select name="food" id="food" onChange={(event) => this.handleChange(event, 'food')}>
+              <select name="food" id="food" defaultValue={results.food} onChange={(event) => this.handleChange(event, 'food')}>
                 <option value=''> -- select an option -- </option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
@@ -128,7 +130,7 @@ state = {
             </td>
 
             <td>
-              <select name="sleep" id="sleep" onChange={(event) => this.handleChange(event, 'sleep')}>
+              <select name="sleep" id="sleep" defaultValue={results.sleep} onChange={(event) => this.handleChange(event, 'sleep')}>
                 <option value=''> -- select an option -- </option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
@@ -136,7 +138,7 @@ state = {
             </td>
 
             <td>
-              <select name="mindfullness" id="mindfullness" onChange={(event) => this.handleChange(event, 'mindfullness')}>
+              <select name="mindfullness" id="mindfullness" defaultValue={results.mindfullness} onChange={(event) => this.handleChange(event, 'mindfullness')}>
                 <option value=''> -- select an option -- </option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
@@ -149,7 +151,7 @@ state = {
             
             
             
-            <td><button onClick ={this.handleSave}> Save </button></td>
+            <td><Button onClick ={this.handleSave}> Save </Button></td>
           </tr>
 
         )

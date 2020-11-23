@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-
 import Button from '@material-ui/core/Button';
+
+//adding in sweet alerts
+import swal from 'sweetalert';
+
+
+
 
 
 class UserPage extends Component {
@@ -48,7 +53,7 @@ class UserPage extends Component {
         <p>Your ID is: {this.props.store.user.id}</p>
       </div>
 
-        <section>
+      <section>
       <table>
         <thead>
           <tr>
@@ -69,25 +74,29 @@ class UserPage extends Component {
         <tbody>
           {this.props.store.results.map(results=>(
             <tr key={results.user_id}>
-              <td class="date">{results.date}</td>
-              <td class="workout">{results.workout}</td>
-              <td class="workout_rating">{results.workout_rating}</td>
-              <td>{results.post_workout_rating}</td>
-              <td>{results.alcohol}</td>
-              <td>{results.food}</td>
-              <td>{results.sleep}</td>
-              <td>{results.mindfullness}</td>
-              <td>{results.overall_status}</td>
+              <td className="date">{results.date}</td>
+              <td className="workout">{results.workout}</td>
+              <td className="workout_rating">{results.workout_rating}</td>
+              <td className="post_workout_rating">{results.post_workout_rating}</td>
+              <td className="alcohol">{results.alcohol}</td>
+              <td className ="food">{results.food}</td>
+              <td className="sleep">{results.sleep}</td>
+              <td className="mindfullness">{results.mindfullness}</td>
+              <td className="overall_status">{results.overall_status}</td>
 
               {/* need to set up edit to link to edit page */}
               {/* need to set up delete router, etc */}
 
               <td><Button variant="contained" color="primary" onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</Button></td>
-              <td><Button variant="contained" color="secondary" onClick={()=> this.delete(results)}>Delete</Button></td>            
+              
+              {results.user_id === this.props.store.user.id ? 
+              <td><Button variant="contained" color="secondary" onClick={()=> this.delete(results)}>Delete</Button></td>
+              :
+              <td></td>
+              }
 
 
             </tr>
-
 
 
           ))}
@@ -98,6 +107,9 @@ class UserPage extends Component {
           </tbody> 
       </table>  
     </section> 
+
+    {/* <Button variant="contained" color="secondary">Delete all Workouts</Button> */}
+
 
         {/* currently have the logout button deleted from the user page */}
         {/* <LogOutButton className="log-in" /> */}

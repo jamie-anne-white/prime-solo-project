@@ -8,7 +8,11 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 // import Select from '@material-ui/core/Select';
+
+
 
 
 
@@ -23,7 +27,7 @@ class AddWorkout extends Component {
   state = {
     addResult: { 
       user_id: 1,
-      // date: '',
+      date: "2020-01-12",
       workout: '',
       workout_rating: 0,
       post_workout_rating: 0,
@@ -42,6 +46,8 @@ class AddWorkout extends Component {
     // event.preventDefault();
     this.props.dispatch({type: "ADD_RESULTS", payload: this.state.addResult});
     this.props.dispatch({type: "GET_RESULTS"});
+    this.props.history.push('/')
+
     // this.setState({
     //   user_id: 1,
     //   // date: '',
@@ -67,6 +73,8 @@ class AddWorkout extends Component {
     })
   }
 
+
+
   // handleOptionChange = () => {
   //   if (document.getElementById('completedStatus').checked)
   //   {
@@ -90,7 +98,16 @@ class AddWorkout extends Component {
     <form onSubmit={this.addNewWorkout}>
 
     <div>
-     <input type="date"/>
+     <TextField
+     id="date"
+     label="Workout Date"
+     type="date"
+     defaultValue="2020-01-12"
+     InputLabelProps={{
+       shrink:true,
+     }}
+     onChange={(event) => this.handleChange(event, 'date') }
+     />
     </div>
 
       <div>
