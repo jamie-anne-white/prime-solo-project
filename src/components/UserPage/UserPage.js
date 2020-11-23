@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 // import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+import Button from '@material-ui/core/Button';
+
+
 class UserPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
 
@@ -66,9 +69,9 @@ class UserPage extends Component {
         <tbody>
           {this.props.store.results.map(results=>(
             <tr key={results.user_id}>
-              <td>{results.date}</td>
-              <td>{results.workout}</td>
-              <td>{results.workout_rating}</td>
+              <td class="date">{results.date}</td>
+              <td class="workout">{results.workout}</td>
+              <td class="workout_rating">{results.workout_rating}</td>
               <td>{results.post_workout_rating}</td>
               <td>{results.alcohol}</td>
               <td>{results.food}</td>
@@ -79,8 +82,8 @@ class UserPage extends Component {
               {/* need to set up edit to link to edit page */}
               {/* need to set up delete router, etc */}
 
-              <td><button onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</button></td>
-              <td><button onClick={()=> this.delete(results)}>Delete</button></td>            
+              <td><Button variant="contained" color="primary" onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</Button></td>
+              <td><Button variant="contained" color="secondary" onClick={()=> this.delete(results)}>Delete</Button></td>            
 
 
             </tr>

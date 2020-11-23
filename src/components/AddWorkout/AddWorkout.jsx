@@ -8,6 +8,8 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+// import Select from '@material-ui/core/Select';
+
 
 
 
@@ -210,7 +212,7 @@ class AddWorkout extends Component {
         </div>
 
         <div>
-          <Button variant="contained" color="primary" type='submit' > Submit Workout </Button>
+          <Button variant="contained" type='submit' > Submit Workout </Button>
         </div>
 
         </form>

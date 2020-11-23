@@ -26,6 +26,8 @@ import AddWorkout from '../AddWorkout/AddWorkout';
 // import Results from '../Results/Results'; figuring this out
 
 import './App.css';
+//adding in appbar
+
 
 class App extends Component {
   componentDidMount() {

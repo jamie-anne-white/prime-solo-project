@@ -73,7 +73,7 @@ state = {
         <p>EDIT WORKOUT FORM</p>
         {/* {JSON.stringify(this.props.store.edit)} */}
         <section>
-        <table>
+        <table class="center">
           <thead>
             <tr>
               <th> Date </th>
