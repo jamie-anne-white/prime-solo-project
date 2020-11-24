@@ -29,6 +29,8 @@ import './App.css';
 //adding in appbar
 
 
+
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });

@@ -7,9 +7,10 @@ const router = express.Router();
  */
 // GET for all results
 router.get('/', (req, res) => {
-    // console.log('helloo from Results get');
-    const queryText = `SELECT * FROM "results";`;
-    pool.query(queryText).then((result) => 
+    console.log('helloo from Results get', req.user.id);
+    const queryText = `SELECT * FROM "results"
+    WHERE "results"."user_id" = $1 ;`;
+    pool.query(queryText, [req.user.id]).then((result) => 
     res.send(result.rows)).catch((error) => {
       console.log('error in GET results', error);
       

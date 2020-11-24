@@ -19,7 +19,7 @@ import swal from 'sweetalert';
 
 class EditWorkout extends Component {
 state = {
-  date: 'null',
+  date: null,
   workout: '',
   workout_rating: 0,
   post_workout_rating: 0,
@@ -37,8 +37,12 @@ state = {
   componentDidMount() {
     console.log('in Edit');
     this.props.dispatch({type: `GET_RESULTS`, payload: this.props.match.params})
-    // GET RESULTS ID
+    if (this.props.store.edit[0].user_id !== this.state.user_id) {
+      this.setState({
+        ...this.props.store.edit[0]
+      }) 
   }
+}
 
   componentDidUpdate() {
     console.log(this.props.store.edit);
@@ -108,24 +112,24 @@ state = {
 
         return(
           <tr key={results.user_id}>
-            <td>
+        <td>
 
-    <div>
-     <TextField
-     id="date"
-     label="Workout Date"
-     type="date"
-     defaultValue="2020-12-01"
-     InputLabelProps={{
-       shrink:true,
-     }}
-     onChange={(event) => this.handleChange(event, 'date') }
-     />
-    </div>
+            <div>
+            <TextField
+            id="date"
+            label="Workout Date"
+            type="date"
+            defaultValue="2020-12-01"
+            InputLabelProps={{
+              shrink:true,
+            }}
+            onChange={(event) => this.handleChange(event, 'date') }
+            />
+            </div>
 
             </td>
 
-            <td>
+          <td>
               <select name="workout" id="workout" defaultValue={results.workout} onChange={(event) => this.handleChange(event, 'workout')}>
                 <option value=''> -- select an option -- </option>
                 <option value="Yes">Yes</option>
@@ -138,7 +142,7 @@ state = {
             <td><input type="number" min="1" max="6" defaultValue={results.post_workout_rating} onChange={(event) => this.handleChange(event, 'post_workout_rating')} /> </td>
             
             <td>
-            <select name="alcohol" id="alcohol" defaultValue={results.alcohol} onChange={(event) => this.handleChange(event, 'alcohol')}>
+            <select name="alcohol" id="alcohol" onChange={(event) => this.handleChange(event, 'alcohol')}>
             <option value=''> -- select an option -- </option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -147,7 +151,7 @@ state = {
 
 
             <td>
-              <select name="food" id="food" defaultValue={results.food} onChange={(event) => this.handleChange(event, 'food')}>
+              <select name="food" id="food" onChange={(event) => this.handleChange(event, 'food')}>
                 <option value=''> -- select an option -- </option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
@@ -155,7 +159,7 @@ state = {
             </td>
 
             <td>
-              <select name="sleep" id="sleep" defaultValue={results.sleep} onChange={(event) => this.handleChange(event, 'sleep')}>
+              <select name="sleep" id="sleep" onChange={(event) => this.handleChange(event, 'sleep')}>
                 <option value=''> -- select an option -- </option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
@@ -163,7 +167,7 @@ state = {
             </td>
 
             <td>
-              <select name="mindfullness" id="mindfullness" defaultValue={results.mindfullness} onChange={(event) => this.handleChange(event, 'mindfullness')}>
+              <select name="mindfullness" id="mindfullness" onChange={(event) => this.handleChange(event, 'mindfullness')}>
                 <option value=''> -- select an option -- </option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>

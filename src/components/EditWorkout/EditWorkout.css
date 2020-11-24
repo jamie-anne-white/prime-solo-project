@@ -18,3 +18,49 @@ table, th, td {
     background-color: white;
   }
 
+  .workout_yes {
+    background-color: rgb(174, 200, 174);
+  }
+
+  .workout_no {
+    background-color: rgb(221, 180, 180);
+
+
+  }
+
+  .alcohol_yes {
+    background-color: rgb(221, 180, 180);
+
+  }
+
+  .alcohol_no {
+    background-color: rgb(174, 200, 174);
+
+  }
+
+  .food_yes {
+    background-color: rgb(174, 200, 174);
+
+  }
+
+  .food_no {
+    background-color: rgb(221, 180, 180);
+
+  }
+
+  .sleep_yes {
+    background-color: rgb(174, 200, 174);
+
+  }
+  
+  .sleep_no {
+    background-color: rgb(221, 180, 180);
+  }
+
+  .mindfullness_yes {
+    background-color: rgb(174, 200, 174);
+  }
+
+  .mindfullness_no {
+    background-color: rgb(221, 180, 180);
+  }

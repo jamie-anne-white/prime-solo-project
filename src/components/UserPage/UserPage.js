@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import Button from '@material-ui/core/Button';
-
-//adding in sweet alerts
 import swal from 'sweetalert';
+
+// import CanvasJSReact from './canvasjs.react';
+// var CanvasJS = CanvasJSReact.CanvasJS;
+// var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
+
+
 
 
 
@@ -13,20 +17,23 @@ import swal from 'sweetalert';
 
 class UserPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
-
+  
 
   componentDidMount () {
     console.log(this.props);
     this.getResults();
+
+  }
+
+  componentDidUpdate () {
+    
   }
 
   handleClick = () => {
     console.log('clicked buttons in results');
   }
-
   getResults = () => {
     this.props.dispatch({type: "FETCH_RESULTS"})
-
   }
 
   delete = (results) => {
@@ -48,30 +55,19 @@ class UserPage extends Component {
           swal("Your workout is safe!")
         }
       })
-
-
   }
 
-
-  // resultsAreYes = (props) => {
-  //   const answeredYes = props.answeredYes;
-  //   if (answeredYes) {
-  //     return 'X';
-  //   }
-  //     return '';
-
-
-  // }
-
   render() {
+
+
     return (
       <>
+     
       <div>
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
         <p>Your ID is: {this.props.store.user.id}</p>
       </div>
 
-      <div className="resultsContainer">
       <table>
         <thead>
           <tr>
@@ -92,73 +88,55 @@ class UserPage extends Component {
         <tbody>
           {this.props.store.results.map(results=>(
             <tr key={results.id}>
-              {results.user_id=== this.props.store.user.id ?
               <td className="date">{results.date}</td>
-              :
-              <td></td>
 
+
+              {results.workout === "Yes" ?  
+              <td className="workout_yes">{results.workout}</td>
+              :
+              <td className="workout_no">{results.workout}</td>
               }
 
-              {results.user_id === this.props.store.user.id ?
-              <td className="workout">{results.workout}</td>
-              :
-              <td></td>
 
-              }
-
-              {results.user_id === this.props.store.user.id ?
               <td className="workout_rating">{results.workout_rating}</td>
-              :
-              <td></td>
-              }
 
-              {results.user_id=== this.props.store.user.id ?
+
               <td className="post_workout_rating">{results.post_workout_rating}</td>
+
+              {results.alcohol === "Yes" ?  
+              <td className="alcohol_yes">{results.alcohol}</td>
               :
-              <td></td>
+              <td className="alcohol_no">{results.alcohol}</td>
               }
 
-              {results.user_id === this.props.store.user.id ?
-              <td className="alcohol">{results.alcohol}</td>
+              {results.food === "Yes" ?  
+              <td className="food_yes">{results.food}</td>
               :
-              <td></td>
-              }
-              {results.user_id === this.props.store.user.id ?
-              <td className="food">{results.food}</td>
-              :
-              <td></td>
+              <td className="food_no">{results.food}</td>
               }
 
-              {results.user_id === this.props.store.user.id ?
-              <td className="sleep">{results.sleep}</td>
-              :
-              <td></td>
-              } 
 
-              {results.user_id === this.props.store.user.id ?
-              <td className="mindfullness">{results.mindfullness}</td>
+              {results.sleep === "Yes" ?
+              <td className="sleep_yes">{results.sleep}</td>
               :
-              <td></td>
-              } 
+              <td className="sleep_no">{results.sleep}</td>
+              }
 
-              {results.user_id === this.props.store.user.id ?
+              {results.mindfullness === "Yes" ?
+              <td className="mindfullness_yes">{results.mindfullness}</td>
+              :
+              <td className="mindfullness_no">{results.mindfullness}</td>
+
+              }
+
+ 
               <td className="overall_status">{results.overall_status}</td>
-              :
-              <td></td>
-              } 
 
-              {results.user_id === this.props.store.user.id ?
+
               <td><Button variant="contained" color="primary" onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</Button></td>
-
-              :
-              <td></td>
-              }
               
-              {results.user_id === this.props.store.user.id ? 
+
               <td><Button variant="contained" color="secondary" onClick={()=> this.delete(results)}>Delete</Button></td>
-              :
-              <td></td>
-              }
 
 
             </tr>
@@ -171,13 +149,11 @@ class UserPage extends Component {
 
           </tbody> 
       </table>  
-    </div> 
+
+
 
     {/* <Button variant="contained" color="secondary">Delete all Workouts</Button> */}
 
-
-        {/* currently have the logout button deleted from the user page */}
-        {/* <LogOutButton className="log-in" /> */}
       </>
     );
   }
