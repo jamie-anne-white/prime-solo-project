@@ -18,6 +18,7 @@ import swal from 'sweetalert';
 
 class EditWorkout extends Component {
 state = {
+  date: '',
   workout: '',
   workout_rating: 0,
   post_workout_rating: 0,
