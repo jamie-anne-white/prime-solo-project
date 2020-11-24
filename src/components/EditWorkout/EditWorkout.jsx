@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import { TextField, Button, Card } from '@material-ui/core';
+
+
 
 
 
@@ -18,7 +19,7 @@ import swal from 'sweetalert';
 
 class EditWorkout extends Component {
 state = {
-  date: '',
+  date: 'null',
   workout: '',
   workout_rating: 0,
   post_workout_rating: 0,
@@ -83,7 +84,7 @@ state = {
 
         <p>EDIT WORKOUT FORM</p>
         {/* {JSON.stringify(this.props.store.edit)} */}
-        <section>
+        <Card>
         <table className="edit-table">
           <thead>
             <tr>
@@ -184,7 +185,7 @@ state = {
 
       </tbody>
         </table>
-        </section>
+        </Card>
   
       </div>
       </div>
