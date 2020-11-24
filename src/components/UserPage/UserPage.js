@@ -91,7 +91,7 @@ class UserPage extends Component {
         </thead>
         <tbody>
           {this.props.store.results.map(results=>(
-            <tr key={results.user_id}>
+            <tr key={results.id}>
               {results.user_id=== this.props.store.user.id ?
               <td className="date">{results.date}</td>
               :
