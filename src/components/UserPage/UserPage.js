@@ -71,7 +71,7 @@ class UserPage extends Component {
         <p>Your ID is: {this.props.store.user.id}</p>
       </div>
 
-      <section>
+      <div className="resultsContainer">
       <table>
         <thead>
           <tr>
@@ -171,7 +171,7 @@ class UserPage extends Component {
 
           </tbody> 
       </table>  
-    </section> 
+    </div> 
 
     {/* <Button variant="contained" color="secondary">Delete all Workouts</Button> */}
 
