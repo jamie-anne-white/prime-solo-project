@@ -6,7 +6,8 @@ const router = express.Router();
 //GET by ID 
 router.get('/:id', (req, res) => {
   console.log('in ID edit router', req.params.id)
-    const queryText = `SELECT 
+    const queryText = `SELECT
+    "results".date, 
     "results".workout, 
     "results".workout_rating, 
     "results".post_workout_rating, 
@@ -25,7 +26,7 @@ router.get('/:id', (req, res) => {
             res.send(result.rows);
         })
         .catch( (error) => {
-            console.log(`Error on details query ${error}`);
+            console.log(`Error on specific ID query ${error}`);
             res.sendStatus(500);
         });
   });
@@ -43,19 +44,22 @@ router.put('/', (req, res) => {
 
 
     const queryText = `UPDATE "results"
-    SET 
-    "workout" = $1, 
-    "workout_rating" = $2, 
-    "post_workout_rating" = $3, 
-    "alcohol" = $4, 
-    "food" = $5, 
-    "sleep" = $6, 
-    "mindfullness" = $7, 
-    "overall_status" = $8,
-    "user_id" = $9
-    WHERE "id" = $10;`;
+    SET
+    "date" = $1, 
+    "workout" = $2, 
+    "workout_rating" = $3, 
+    "post_workout_rating" = $4, 
+    "alcohol" = $5, 
+    "food" = $6, 
+    "sleep" = $7, 
+    "mindfullness" = $8, 
+    "overall_status" = $9,
+    "user_id" = $10
+    WHERE "id" = $11;`;
     pool.query(queryText, 
-        [req.body.workout,
+        [
+            req.body.date,
+            req.body.workout,
             req.body.workout_rating, 
             req.body.post_workout_rating, 
             req.body.alcohol, 

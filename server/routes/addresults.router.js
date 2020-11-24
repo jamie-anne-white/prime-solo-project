@@ -8,6 +8,7 @@ const router = express.Router();
 
 
    const queryText = `INSERT INTO "results" (
+    "date",
     "workout",
     "workout_rating",
     "post_workout_rating",
@@ -17,9 +18,19 @@ const router = express.Router();
     "mindfullness", 
     "overall_status", 
     "user_id")
-   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`
+   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`
 
-   pool.query(queryText, [req.body.workout,req.body.workout_rating, req.body.post_workout_rating, req.body.alcohol, req.body.food, req.body.sleep, req.body.mindfullness, req.body.overall_status, req.user.id])
+   pool.query(queryText, [
+     req.body.date, 
+     req.body.workout,
+     req.body.workout_rating, 
+     req.body.post_workout_rating, 
+     req.body.alcohol, 
+     req.body.food, 
+     req.body.sleep, 
+     req.body.mindfullness, 
+     req.body.overall_status, 
+     req.user.id])
    .then(result => {
      res.sendStatus(201);
    }).catch(error => {

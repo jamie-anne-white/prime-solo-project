@@ -29,14 +29,14 @@ class AddWorkout extends Component {
   state = {
     addResult: { 
       user_id: this.props.store.user_id,
-      date: "2020-01-12",
+      date: null,
       workout: '',
       workout_rating: 0,
       post_workout_rating: 0,
-      alcohol: 'Yes',
-      food: 'Yes',
-      sleep: 'Yes',
-      mindfullness: 'Yes',
+      alcohol: '',
+      food: '',
+      sleep: '',
+      mindfullness: '',
       overall_status: 0
   },
   viewSubmit: false
@@ -98,7 +98,7 @@ class AddWorkout extends Component {
      id="date"
      label="Workout Date"
      type="date"
-     defaultValue="2020-01-12"
+     defaultValue="2020-12-01"
      InputLabelProps={{
        shrink:true,
      }}

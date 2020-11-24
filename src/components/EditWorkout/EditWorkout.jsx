@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 
 
 
@@ -23,7 +25,7 @@ state = {
   food: '',
   sleep: '',
   mindfullness: '',
-  overall_status: '',
+  overall_status: 0,
   user_id: 0,
   id: 0
 }
@@ -104,7 +106,22 @@ state = {
 
         return(
           <tr key={results.user_id}>
-            <td></td>
+            <td>
+
+    <div>
+     <TextField
+     id="date"
+     label="Workout Date"
+     type="date"
+     defaultValue="2020-12-01"
+     InputLabelProps={{
+       shrink:true,
+     }}
+     onChange={(event) => this.handleChange(event, 'date') }
+     />
+    </div>
+
+            </td>
 
             <td>
               <select name="workout" id="workout" defaultValue={results.workout} onChange={(event) => this.handleChange(event, 'workout')}>
