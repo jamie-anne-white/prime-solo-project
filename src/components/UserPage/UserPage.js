@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import Button from '@material-ui/core/Button';
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
 
 
 import Table from '@material-ui/core/Table';
@@ -28,30 +28,32 @@ class UserPage extends Component {
   }
 
   handleClick = () => {
-    console.log('clicked buttons in results');
+    console.log('clicked buttons in results', this.props.store.results.id);
   }
   getResults = () => {
     this.props.dispatch({type: "FETCH_RESULTS"})
   }
 
   delete = (results) => {
-    console.log('deleted', results.id);
-    this.props.dispatch({type: "DELETE_RESULTS", payload: results.id})
-    swal({
-      title: "Are you sure?",
-      text: "this cannot be undone!", 
-      icon: "warning",
-      buttons: true,
-      dangerMode: true})
-      .then((willDelete) => {
-        if (willDelete) {
-          swal("Your workout has been deleted!", {
-            icon: "success",
-          });
-        } else {
-          swal("Your workout is safe!")
-        }
-      })
+    console.log('deleted', results.id, results.user_id);
+    this.props.dispatch({type: "DELETE_RESULTS", payload: {resultsId: results.id, userId: results.user_id}})
+    
+    
+    // swal({
+    //   title: "Are you sure?",
+    //   text: "this cannot be undone!", 
+    //   icon: "warning",
+    //   buttons: true,
+    //   dangerMode: true})
+    //   .then((willDelete) => {
+    //     if (willDelete) {
+    //       swal("Your workout has been deleted!", {
+    //         icon: "success",
+    //       });
+    //     } else {
+    //       swal("Your workout is safe!")
+    //     }
+    //   })
   }
 
   render() {
@@ -94,6 +96,7 @@ class UserPage extends Component {
               }
 
               <TableCell align="center">{results.workout_rating}</TableCell>
+
               <TableCell align="center">{results.post_workout_rating}</TableCell>
 
 

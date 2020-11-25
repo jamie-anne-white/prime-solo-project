@@ -9,7 +9,7 @@ function* fetchResults() {
   
   try {
     const resultsResponse = yield axios.get('/api/results');
-    // console.log('test to see if it is in SAGA', resultsResponse.data);
+    console.log('test to see if it is in SAGA', resultsResponse.data);
     
     yield put({ type: 'SET_RESULTS', payload: resultsResponse.data })
   } catch (error) {

@@ -19,7 +19,7 @@ import swal from 'sweetalert';
 
 class EditWorkout extends Component {
 state = {
-  date: null,
+  date: 'null',
   workout: '',
   workout_rating: 0,
   post_workout_rating: 0,
@@ -100,7 +100,7 @@ state = {
                 id="date"
                 label="Workout Date"
                 type="date"
-                defaultValue="2020-12-01"
+                value={this.props.store.date}
                 InputLabelProps={{
                   shrink:true,
                 }}
@@ -217,14 +217,15 @@ state = {
             <Button onClick ={this.handleSave}> Save </Button>
           
           </Card>
+
         
         )
        
         })}
 
 
-  
-      </>
+</>
+ 
     )
   }
 }

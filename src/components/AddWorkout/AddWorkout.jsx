@@ -7,10 +7,14 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+// import FormHelperText from '@material-ui/core/FormHelperText';
+
 
 // import Select from '@material-ui/core/Select';
+
 import swal from 'sweetalert';
 
 import MenuItem from '@material-ui/core/MenuItem';
@@ -47,10 +51,15 @@ class AddWorkout extends Component {
   }
 
   addNewWorkout= (event) => {
-    console.log('submit clicked', this.state.addResult);
-    // event.preventDefault();
+    // console.log('submit clicked', this.state.addResult);
+    event.preventDefault();
     this.props.dispatch({type: "ADD_RESULTS", payload: this.state.addResult});
     this.props.dispatch({type: "GET_RESULTS"});
+    
+    
+    
+    
+    
     swal({
       title: "Thank you!",
       text: "Your workout has been saved!",
@@ -131,36 +140,38 @@ class AddWorkout extends Component {
 
 
       <div>
-        <p>How did your workout feel today?</p>
         <FormControl component="fieldset" onChange={(event => this.setState({workout_rating: event.target.value}))}>
-          <RadioGroup row>
-            <FormControlLabel value="1" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="1" />
-            <FormControlLabel value="2" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="2" />
-            <FormControlLabel value="3" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="3" />
-            <FormControlLabel value="4" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="4" />
-            <FormControlLabel value="5" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="5" />
-            <FormControlLabel value="6" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="6" />
-          </RadioGroup>
+          <FormLabel> How did your workout feel today?</FormLabel>
+            <RadioGroup row>
+              <FormControlLabel value="1" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="1" labelPlacement="bottom"/>
+              <FormControlLabel value="2" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="2" labelPlacement="bottom"/>
+              <FormControlLabel value="3" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="3" labelPlacement="bottom"/>
+              <FormControlLabel value="4" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="4" labelPlacement="bottom"/>
+              <FormControlLabel value="5" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="5" labelPlacement="bottom"/>
+              <FormControlLabel value="6" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="6" labelPlacement="bottom"/>
+            </RadioGroup>
         </FormControl>
       </div>
 
 
       <div>
-        <p>How do you feel now that you've completed your workout?</p>
         <FormControl component="fieldset" onChange={(event => this.setState({post_workout_rating: event.target.value}))}>
-          <RadioGroup row>
-            <FormControlLabel value="1" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="1" />
-            <FormControlLabel value="2" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="2" />
-            <FormControlLabel value="3" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="3" />
-            <FormControlLabel value="4" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="4" />
-            <FormControlLabel value="5" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="5" />
-            <FormControlLabel value="6" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="6" />
-          </RadioGroup>
+          <FormLabel > How do you feel after working out/not working out?</FormLabel>
+            <RadioGroup row>
+              <FormControlLabel value="1" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="1" labelPlacement="bottom" />
+              <FormControlLabel value="2" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="2" labelPlacement="bottom" />
+              <FormControlLabel value="3" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="3" labelPlacement="bottom" />
+              <FormControlLabel value="4" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="4" labelPlacement="bottom" />
+              <FormControlLabel value="5" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="5" labelPlacement="bottom" />
+              <FormControlLabel value="6" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="6" labelPlacement="bottom" />
+            </RadioGroup>
         </FormControl>
       </div>
 
         <div>
-          <p>Did you consume alcohol within 24 hours of this workout?</p>
+          <p>Have you consumed alcohol within the past 24 hours?</p>
+          {/* <FormLabel component="alcohol_form"> Did you consume alcohol within 24 hours of this workout?</FormLabel> */}
+
             <TextField
               id="alcohol"
               select
@@ -199,7 +210,7 @@ class AddWorkout extends Component {
         </div>
 
         <div>
-          <p>Have you met your sleep goals within the past 24 hours of this workout?</p>
+          <p>Have you met your sleep goals within the past 24 hours?</p>
 
             <TextField
               id="sleep"
@@ -220,7 +231,7 @@ class AddWorkout extends Component {
         </div>
 
         <div>
-          <p>Have you met your nutrition goals within the past 24 hours of this workout?</p>
+          <p>Did you practice meditation or wellness today?</p>
             <TextField
               id="mindfullness"
               select
@@ -241,17 +252,16 @@ class AddWorkout extends Component {
         </div>
 
         <div>
-        <p>How do you feel overall or holistically today?</p>
-
         <FormControl component="fieldset" onChange={(event => this.setState({overall_status: event.target.value}))}>
-          <RadioGroup row>
-            <FormControlLabel value="1" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="1" size="small"/>
-            <FormControlLabel value="2" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="2" />
-            <FormControlLabel value="3" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="3" />
-            <FormControlLabel value="4" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="4" />
-            <FormControlLabel value="5" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="5" />
-            <FormControlLabel value="6" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="6" />
-          </RadioGroup>
+        <FormLabel> How do you feel holistically or as a whole today?</FormLabel>
+            <RadioGroup row>
+              <FormControlLabel value="1" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} labelPlacement="bottom"/>
+              <FormControlLabel value="2" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} labelPlacement="bottom"/>
+              <FormControlLabel value="3" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} labelPlacement="bottom"/>
+              <FormControlLabel value="4" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} labelPlacement="bottom"/>
+              <FormControlLabel value="5" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} labelPlacement="bottom"/>
+              <FormControlLabel value="6" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} labelPlacement="bottom"/>
+            </RadioGroup>
         </FormControl>  
         </div>
 
