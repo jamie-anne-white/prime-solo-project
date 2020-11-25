@@ -1,22 +1,23 @@
 
 
 
-table, th, td {
-    border: 1px solid black;
+Table {
+    border: 2px solid rgb(127, 129, 127);
     border-collapse: collapse;
     text-align: center;
     padding: 15px;
     width: 75%;
 
-
   }
+
   th {
-    background-color:#ecdfdf;
+    background-color: #94b4a4;
   }
 
-  tr {
-    background-color: white;
-  }
+  th, td {
+    border: 2px solid rgb(127, 129, 127);
+
+  } 
 
   .workout_yes {
     background-color: rgb(174, 200, 174);
