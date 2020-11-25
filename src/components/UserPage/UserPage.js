@@ -8,25 +8,26 @@ import swal from 'sweetalert';
 // var CanvasJS = CanvasJSReact.CanvasJS;
 // var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-
-
-
-
-
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 
 class UserPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
   
 
+
   componentDidMount () {
     console.log(this.props);
     this.getResults();
-
   }
 
-  componentDidUpdate () {
-    
+  componentDidUpdate () {  
   }
 
   handleClick = () => {
@@ -39,7 +40,6 @@ class UserPage extends Component {
   delete = (results) => {
     console.log('deleted', results.id);
     this.props.dispatch({type: "DELETE_RESULTS", payload: results.id})
-    
     swal({
       title: "Are you sure?",
       text: "this cannot be undone!", 
@@ -61,100 +61,91 @@ class UserPage extends Component {
 
 
     return (
-      <>
-     
+     <>
       <div>
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
         <p>Your ID is: {this.props.store.user.id}</p>
       </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Did you workout?</th>
-            <th>Workout Rating</th>
-            <th>Post Workout Rating</th>
-            <th>Alcohol Consumption</th>
-            <th>Nutrition Goal Met</th>
-            <th>Sleep Goal Met</th>
-            <th>Mindfullness or Meditation</th>
-            <th>Overall Wellbeing Rating</th>
-            <th>Edit</th>
-            <th>Delete</th>
+      <TableContainer component={Paper}>
+      <Table aria-label="results_table">
+      <TableHead>
+          <TableRow>
+          <TableCell align="center">Date</TableCell>
+          <TableCell align="center">Did you workout?</TableCell>
+          <TableCell align="center">Workout Rating</TableCell>
+          <TableCell align="center">Post Workout Rating</TableCell>
+          <TableCell align="center">Alcohol Consumption</TableCell>
+          <TableCell align="center">Nutrition Goal Met</TableCell>
+          <TableCell align="center">Sleep Goal Met</TableCell>
+          <TableCell align="center">Mindfullness or Meditation</TableCell>
+          <TableCell align="center">Overall Wellbeing</TableCell>
+          <TableCell align="center">Edit</TableCell>
+          <TableCell align="center">Delete</TableCell>
+          </TableRow>
+          </TableHead>
+          <TableBody>
+            {this.props.store.results.map(results => (
+            <TableRow key={results.id}>
 
-          </tr>
-        </thead>
-        <tbody>
-          {this.props.store.results.map(results=>(
-            <tr key={results.id}>
-              <td className="date">{results.date}</td>
+              <TableCell align="center">{results.date}</TableCell>
 
-
-              {results.workout === "Yes" ?  
-              <td className="workout_yes">{results.workout}</td>
+              {results.workout === "Yes" ?               
+              <TableCell align="center" className="workout_yes" >{results.workout}</TableCell>
               :
-              <td className="workout_no">{results.workout}</td>
+              <TableCell align="center" className="workout_no" >{results.workout}</TableCell>
+              }
+
+              <TableCell align="center">{results.workout_rating}</TableCell>
+              <TableCell align="center">{results.post_workout_rating}</TableCell>
+
+
+              {results.alcohol === "Yes" ?               
+              <TableCell align="center" className="alcohol_yes" >{results.alcohol}</TableCell>
+              :
+              <TableCell align="center" className="alcohol_no" >{results.alcohol}</TableCell>
               }
 
 
-              <td className="workout_rating">{results.workout_rating}</td>
-
-
-              <td className="post_workout_rating">{results.post_workout_rating}</td>
-
-              {results.alcohol === "Yes" ?  
-              <td className="alcohol_yes">{results.alcohol}</td>
+              {results.food === "Yes" ?
+              <TableCell align="center" className="food_yes">{results.food}</TableCell>
               :
-              <td className="alcohol_no">{results.alcohol}</td>
+              <TableCell align="center" className="food_no">{results.food} </TableCell>
               }
-
-              {results.food === "Yes" ?  
-              <td className="food_yes">{results.food}</td>
-              :
-              <td className="food_no">{results.food}</td>
-              }
-
 
               {results.sleep === "Yes" ?
-              <td className="sleep_yes">{results.sleep}</td>
+              <TableCell align="center" className="sleep_yes">{results.sleep}</TableCell>
               :
-              <td className="sleep_no">{results.sleep}</td>
+              <TableCell align="center" className="sleep_no">{results.sleep} </TableCell>
               }
 
               {results.mindfullness === "Yes" ?
-              <td className="mindfullness_yes">{results.mindfullness}</td>
+              <TableCell align="center" className="mindfullness_yes">{results.mindfullness}</TableCell>
               :
-              <td className="mindfullness_no">{results.mindfullness}</td>
-
+              <TableCell align="center" className="mindfullness_no">{results.mindfullness} </TableCell>
               }
 
- 
-              <td className="overall_status">{results.overall_status}</td>
+
+              <TableCell align="center">{results.overall_status}</TableCell>
+              <TableCell align="center"><Button variant="contained" color="primary" onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</Button></TableCell>
+              <TableCell align="center">
+              <Button variant="contained" color="secondary" onClick={()=> this.delete(results)}>Delete</Button>
+              </TableCell>
 
 
-              <td><Button variant="contained" color="primary" onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</Button></td>
-              
-
-              <td><Button variant="contained" color="secondary" onClick={()=> this.delete(results)}>Delete</Button></td>
-
-
-            </tr>
-
-
-          ))}
-           
-         
-
-
-          </tbody> 
-      </table>  
+            </TableRow>
+            
+            ))}
+            </TableBody>
+      </Table>
+    </TableContainer>
 
 
 
     {/* <Button variant="contained" color="secondary">Delete all Workouts</Button> */}
 
-      </>
+    </>
+
     );
   }
 }
