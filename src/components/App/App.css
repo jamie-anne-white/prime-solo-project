@@ -111,3 +111,59 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+.data {
+
+  width: 50%;
+  margin-top: 1em;
+  padding: 1em;
+  display: block;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+Table {
+  border: 2px solid rgb(127, 129, 127);
+  border-collapse: collapse;
+  text-align: center;
+  padding: 15px;
+  width: 75%;
+
+}
+
+th {
+  background-color: #6c907e;
+}
+
+th, td {
+  border: 2px solid rgb(127, 129, 127);
+
+} 
+
+.workout_yes, .alcohol_no, .food_yes, .sleep_yes, .mindfullness_yes  {
+  background-color: rgb(174, 200, 174);
+}
+
+
+.mindfullness_no, .sleep_no, .food_no, .alcohol_yes, .workout_no {
+  background-color: rgb(221, 180, 180);
+}
+
+
+/* trying workout rating with radio buttons */
+
+.workout_rating_min, .post_workout_rating_min, .overall_status_min {
+  background-color: rgb(221, 180, 180);
+
+}
+
+.workout_rating_mid, .post_workout_rating_mid, .overall_status_mid {
+  background-color: rgb(216, 215, 168);
+}
+
+.workout_rating_max, .post_workout_rating_max, .overall_status_max {
+  background-color: rgb(174, 200, 174);
+}
