@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, MenuItem, Card } from '@material-ui/core';
 
 
 
@@ -84,115 +84,147 @@ state = {
   render () {
 
     return (
-      <div className="container">
-      <div>
+      <>
 
         <p>EDIT WORKOUT FORM</p>
         {/* {JSON.stringify(this.props.store.edit)} */}
-        <table className="edit-table">
-          <thead>
-            <tr>
-              <th> Date </th>
-              <th> Did you workout? </th>
-              <th> Workout Rating </th>
-              <th> Post Workout Rating </th>
-              <th> Alcohol Consumption </th>
-              <th> Nutrition Goal Met </th>
-              <th> Sleep Goal Met </th>
-              <th> Mindfullness or Meditation </th>
-              <th> Overall Wellbeing Rating </th>
-              <th>Save Workout</th>
-  
-            </tr>
-          </thead>
-          <tbody>
 
       {this.props.store.edit.map((results) => {
         // this.addWorkout(results)
 
         return(
-          <tr key={results.user_id}>
-        <td>
+          <Card key={results.user_id}>
 
             <div>
-            <TextField
-            id="date"
-            label="Workout Date"
-            type="date"
-            defaultValue="2020-12-01"
-            InputLabelProps={{
-              shrink:true,
-            }}
-            onChange={(event) => this.handleChange(event, 'date') }
-            />
+              <TextField
+                id="date"
+                label="Workout Date"
+                type="date"
+                defaultValue="2020-12-01"
+                InputLabelProps={{
+                  shrink:true,
+                }}
+                onChange={(event) => this.handleChange(event, 'date') }
+                />
             </div>
 
-            </td>
+          
 
-          <td>
-              <select name="workout" id="workout" defaultValue={results.workout} onChange={(event) => this.handleChange(event, 'workout')}>
-                <option value=''> -- select an option -- </option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
+        
+            <div>
+              <p>Did you workout today?</p>
+                <TextField
+                    id="workout"
+                    select
+                    label="---"
+                    value={this.props.store.workout}
+                    onChange={(event) => this.handleChange(event, 'workout')}
+                    variant="filled"
+                    size="small"
+                    >
+                  <MenuItem value="Yes">Yes</MenuItem>
+                  <MenuItem value="No">No</MenuItem>
 
-            <td><input type="number" min="1" max="6" defaultValue={results.workout_rating} onChange={(event) => this.handleChange(event, 'workout_rating')} /> </td>
+                </TextField>
+            </div>
 
-            <td><input type="number" min="1" max="6" defaultValue={results.post_workout_rating} onChange={(event) => this.handleChange(event, 'post_workout_rating')} /> </td>
+            <div>
+              <p>How did your workout feel today?</p>
+                <input type="number" min="1" max="6" defaultValue={results.workout_rating} onChange={(event) => this.handleChange(event, 'workout_rating')} />
+            </div>
+
+            <div>
+              <p>How do you feel now that you've completed your workout?</p>
+            <input type="number" min="1" max="6" defaultValue={results.post_workout_rating} onChange={(event) => this.handleChange(event, 'post_workout_rating')} /> 
+            </div>
+
+            <div>
+              <p>Did you consume alcohol within 24 hours of this workout?</p>
+                <TextField
+                  id="alcohol"
+                  select
+                  label="---"
+                  value={this.props.store.alcohol}
+                  onChange={(event) => this.handleChange(event, 'alcohol')}
+                  variant="filled"
+                  size="small"
+                  >
+                    <MenuItem value="Yes">Yes</MenuItem>
+                    <MenuItem value="No">No</MenuItem>
+                </TextField>
+            </div>
             
-            <td>
-            <select name="alcohol" id="alcohol" onChange={(event) => this.handleChange(event, 'alcohol')}>
-            <option value=''> -- select an option -- </option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-            </select>
-            </td>
 
+            <div>
+            <p>Have you met your nutrition goals within the past 24 hours of this workout?</p>
+                <TextField
+                  id="food"
+                  select
+                  label="---"
+                  value={this.props.store.food}
+                  onChange={(event) => this.handleChange(event, 'food')}
+                  variant="filled"
+                  size="small"
+                  >
+                    <MenuItem value="Yes">Yes</MenuItem>
+                    <MenuItem value="No">No</MenuItem>
 
-            <td>
-              <select name="food" id="food" onChange={(event) => this.handleChange(event, 'food')}>
-                <option value=''> -- select an option -- </option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
+                </TextField>
+            </div>
 
-            <td>
-              <select name="sleep" id="sleep" onChange={(event) => this.handleChange(event, 'sleep')}>
-                <option value=''> -- select an option -- </option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
+            <div>
+            <p>Have you met your sleep goals within the past 24 hours of this workout?</p>
+                <TextField
+                  id="sleep"
+                  select
+                  label="---"
+                  value={this.props.store.sleep}
+                  onChange={(event) => this.handleChange(event, 'sleep')}
+                  variant="filled"
+                  size="small"
+                  >
+                    <MenuItem value="Yes">Yes</MenuItem>
+                    <MenuItem value="No">No</MenuItem>
 
-            <td>
-              <select name="mindfullness" id="mindfullness" onChange={(event) => this.handleChange(event, 'mindfullness')}>
-                <option value=''> -- select an option -- </option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
+                </TextField>
+            </div>
 
-            <td><input type="number" min="1" max="6" defaultValue={results.overall_status} onChange={(event) => this.handleChange(event, 'overall_status')}  /> </td>
+            <div>
+              <p>Have you met your wellness or meditation goals in the last 24 hours?</p>
+                <TextField
+                  id="mindfullness"
+                  select
+                  label="---"
+                  value={this.props.store.mindfullness}
+                  onChange={(event) => this.handleChange(event, 'mindfullness')}
+                  variant="filled"
+                  size="small"
+                  >
+                    <MenuItem value="Yes">Yes</MenuItem>
+                    <MenuItem value="No">No</MenuItem>
+
+                </TextField>
+            </div>
+
+            <div>
+              <p>How do you feel overall or holistically today?</p>
+            <input type="number" min="1" max="6" defaultValue={results.overall_status} onChange={(event) => this.handleChange(event, 'overall_status')}  />
+            </div>
             
             
             
             
-            
-            <td><Button onClick ={this.handleSave}> Save </Button></td>
-          </tr>
-
+            <Button onClick ={this.handleSave}> Save </Button>
+          
+          </Card>
+        
         )
        
-      })}
+        })}
 
-      </tbody>
-        </table>
+
   
-      </div>
-      </div>
-
+      </>
     )
   }
 }

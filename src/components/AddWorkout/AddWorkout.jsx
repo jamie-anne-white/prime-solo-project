@@ -13,6 +13,9 @@ import TextField from '@material-ui/core/TextField';
 // import Select from '@material-ui/core/Select';
 import swal from 'sweetalert';
 
+import MenuItem from '@material-ui/core/MenuItem';
+
+
 
 
 
@@ -96,9 +99,10 @@ class AddWorkout extends Component {
     <div>
      <TextField
      id="date"
+     required name = "date"
      label="Workout Date"
      type="date"
-     defaultValue="2020-12-01"
+     value={this.props.store.date}
      InputLabelProps={{
        shrink:true,
      }}
@@ -106,122 +110,149 @@ class AddWorkout extends Component {
      />
     </div>
 
+    <div>
+    <p>Did you workout today?</p>
+      <TextField
+        id="workout"
+        select
+        label="Select"
+        value={this.props.store.workout}
+        onChange={(event) => this.handleChange(event, 'workout')}
+        helperText="Please select an option"
+        variant="filled"
+        size="small"
+        required name = "workout"
+        >
+          <MenuItem value="Yes">Yes</MenuItem>
+          <MenuItem value="No">No</MenuItem>
+
+        </TextField>
+      </div>
+
+
       <div>
-        <p>Did you workout today?</p>
-          <select required name="workout" id="workout" onChange={(event) => this.handleChange(event,'workout')} >
-              <option value=''> -- select an option -- </option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-          </select>
-        </div>
-
-        <div>
         <p>How did your workout feel today?</p>
-        
-       <FormControl component="fieldset" onChange={(event => this.setState({workout_rating: event.target.value}))}>
-        <RadioGroup row>
-        <FormControlLabel value="1" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="1" />
-        <FormControlLabel value="2" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="2" />
-        <FormControlLabel value="3" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="3" />
-        <FormControlLabel value="4" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="4" />
-        <FormControlLabel value="5" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="5" />
-        <FormControlLabel value="6" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="6" />
-        </RadioGroup>
+        <FormControl component="fieldset" onChange={(event => this.setState({workout_rating: event.target.value}))}>
+          <RadioGroup row>
+            <FormControlLabel value="1" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="1" />
+            <FormControlLabel value="2" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="2" />
+            <FormControlLabel value="3" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="3" />
+            <FormControlLabel value="4" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="4" />
+            <FormControlLabel value="5" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="5" />
+            <FormControlLabel value="6" control={<Radio />} onChange={(event) => this.handleChange(event, 'workout_rating')} label="6" />
+          </RadioGroup>
         </FormControl>
-
-        {/* <input type="radio" value="0" label="workout_rating" onChange={(event) => this.handleChange(event, 'workout_rating')}/>
-        <input type="radio" value="1" label="workout_rating" onChange={(event) => this.handleChange(event, 'workout_rating')}/>
-        <input type="radio" value="2" label="workout_rating" onChange={(event) => this.handleChange(event, 'workout_rating')}/> 
-        <input type="radio" value="3" label="workout_rating" onChange={(event) => this.handleChange(event, 'workout_rating')}/> 
-        <input type="radio" value="4" label="workout_rating" onChange={(event) => this.handleChange(event, 'workout_rating')}/>
-        <input type="radio" value="5" label="workout_rating" onChange={(event) => this.handleChange(event, 'workout_rating')}/>  */}
-        
-        </div>
+      </div>
 
 
-        <div>
+      <div>
         <p>How do you feel now that you've completed your workout?</p>
-
-
-
         <FormControl component="fieldset" onChange={(event => this.setState({post_workout_rating: event.target.value}))}>
-        <RadioGroup row>
-        <FormControlLabel value="1" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="1" />
-        <FormControlLabel value="2" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="2" />
-        <FormControlLabel value="3" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="3" />
-        <FormControlLabel value="4" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="4" />
-        <FormControlLabel value="5" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="5" />
-        <FormControlLabel value="6" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="6" />
-        </RadioGroup>
+          <RadioGroup row>
+            <FormControlLabel value="1" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="1" />
+            <FormControlLabel value="2" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="2" />
+            <FormControlLabel value="3" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="3" />
+            <FormControlLabel value="4" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="4" />
+            <FormControlLabel value="5" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="5" />
+            <FormControlLabel value="6" control={<Radio />} onChange={(event) => this.handleChange(event, 'post_workout_rating')} label="6" />
+          </RadioGroup>
         </FormControl>
+      </div>
 
-        {/* <input type="radio" value="1" label="post_workout_rating"  onChange={(event) => this.handleChange(event, 'post_workout_rating')}/>
-        <input type="radio" value="1" label="post_workout_rating"  onChange={(event) => this.handleChange(event, 'post_workout_rating')}/>
-        <input type="radio" value="2" label="post_workout_rating" onChange={(event) => this.handleChange(event, 'post_workout_rating')}/> 
-        <input type="radio" value="3" label="post_workout_rating" onChange={(event) => this.handleChange(event, 'post_workout_rating')}/> 
-        <input type="radio" value="4" label="post_workout_rating" onChange={(event) => this.handleChange(event, 'post_workout_rating')}/>
-        <input type="radio" value="5" label="post_workout_rating" onChange={(event) => this.handleChange(event, 'post_workout_rating')}/>  */}
+        <div>
+          <p>Did you consume alcohol within 24 hours of this workout?</p>
+            <TextField
+              id="alcohol"
+              select
+              label="Select"
+              value={this.props.store.alcohol}
+              onChange={(event) => this.handleChange(event, 'alcohol')}
+              helperText="Please select an option"
+              variant="filled"
+              size="small"
+              required name = "alcohol"
+              >
+                <MenuItem value="Yes">Yes</MenuItem>
+                <MenuItem value="No">No</MenuItem>
+            </TextField>
 
         </div>
 
         <div>
-        <p>Did you consume alcohol within 24 hours of this workout?</p>
-          <select required name="alcohol" id="alcohol" onChange={(event) => this.handleChange(event, 'alcohol')}>
-              <option value=''> -- select an option -- </option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
+          <p>Have you met your nutrition goals within the past 24 hours of this workout?</p>
+            <TextField
+              id="food"
+              select
+              label="Select"
+              value={this.props.store.food}
+              onChange={(event) => this.handleChange(event, 'food')}
+              helperText="Please select an option"
+              variant="filled"
+              size="small"
+              required name = "food"
 
-          </select>
+              >
+                <MenuItem value="Yes">Yes</MenuItem>
+                <MenuItem value="No">No</MenuItem>
+            </TextField>
+
         </div>
 
         <div>
-        <p>Have you met your nutrition goals within the past 24 hours of this workout?</p>
-          <select required name="food" id="food" onChange={(event) => this.handleChange(event, 'food')}>
-              <option value=''> -- select an option -- </option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-          </select>
+          <p>Have you met your sleep goals within the past 24 hours of this workout?</p>
+
+            <TextField
+              id="sleep"
+              select
+              label="Select"
+              value={this.props.store.sleep}
+              onChange={(event) => this.handleChange(event, 'sleep')}
+              helperText="Please select an option"
+              variant="filled"
+              size="small"
+              required name = "sleep"
+              >
+                <MenuItem value="Yes">Yes</MenuItem>
+                <MenuItem value="No">No</MenuItem>
+
+            </TextField>
+
         </div>
 
         <div>
-        <p>Did you meet your sleep goal within the past 24 hours leading up to this workout?</p>
-          <select required name="sleep" id="sleep" onChange={(event) => this.handleChange(event, 'sleep')}>
-              <option value=''> -- select an option -- </option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-          </select>
-        </div>
+          <p>Have you met your nutrition goals within the past 24 hours of this workout?</p>
+            <TextField
+              id="mindfullness"
+              select
+              label="Select"
+              value={this.props.store.mindfullness}
+              onChange={(event) => this.handleChange(event, 'mindfullness')}
+              helperText="Please select an option"
+              variant="filled"
+              size="small"
+              required name = "mindfullness"
 
-        <div>
-        <p>Have you practiced mindfullness and/or meditation in the past 24 hours?</p>
-              <select required name="mindfullness" id="mindfullness" onChange={(event) => this.handleChange(event, 'mindfullness')}>
-              <option value=''> -- select an option -- </option>
-  v           <option value="Yes">Yes</option>
-              <option value="No">No</option>
-          </select>
+              >
+                <MenuItem value="Yes">Yes</MenuItem>
+                <MenuItem value="No">No</MenuItem>
+
+            </TextField>
+
         </div>
 
         <div>
         <p>How do you feel overall or holistically today?</p>
 
         <FormControl component="fieldset" onChange={(event => this.setState({overall_status: event.target.value}))}>
-        <RadioGroup row>
-        <FormControlLabel value="1" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="1" size="small"/>
-        <FormControlLabel value="2" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="2" />
-        <FormControlLabel value="3" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="3" />
-        <FormControlLabel value="4" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="4" />
-        <FormControlLabel value="5" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="5" />
-        <FormControlLabel value="6" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="6" />
-        </RadioGroup>
-        </FormControl>
-
-        {/* <input type="radio" value="1" label="overall_status" onChange={(event) => this.handleChange(event, 'overall_status')} />
-        <input type="radio" value="2" label="overall_status" onChange={(event) => this.handleChange(event, 'overall_status')}/> 
-        <input type="radio" value="3" label="overall_status" onChange={(event) => this.handleChange(event, 'overall_status')}/> 
-        <input type="radio" value="4" label="overall_status" onChange={(event) => this.handleChange(event, 'overall_status')}/>
-        <input type="radio" value="5" label="overall_status" onChange={(event) => this.handleChange(event, 'overall_status')}/> 
-        <input type="radio" value="6" label="overall_status" onChange={(event) => this.handleChange(event, 'overall_status')}/>  */}
-
+          <RadioGroup row>
+            <FormControlLabel value="1" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="1" size="small"/>
+            <FormControlLabel value="2" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="2" />
+            <FormControlLabel value="3" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="3" />
+            <FormControlLabel value="4" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="4" />
+            <FormControlLabel value="5" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="5" />
+            <FormControlLabel value="6" control={<Radio />} onChange={(event) => this.handleChange(event, 'overall_status')} label="6" />
+          </RadioGroup>
+        </FormControl>  
         </div>
 
         <div>
