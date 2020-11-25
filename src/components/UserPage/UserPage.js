@@ -4,9 +4,6 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import Button from '@material-ui/core/Button';
 import swal from 'sweetalert';
 
-// import CanvasJSReact from './canvasjs.react';
-// var CanvasJS = CanvasJSReact.CanvasJS;
-// var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
