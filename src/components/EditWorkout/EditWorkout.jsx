@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { TextField, Button, Card } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 
 
 
@@ -55,6 +55,7 @@ state = {
 
   handleChange = (event, propertyName) => {
     event.preventDefault();
+    // console.log('edit workout', this.state);
     this.setState({
         ...this.state,
         [propertyName]: event.target.value,
@@ -88,7 +89,6 @@ state = {
 
         <p>EDIT WORKOUT FORM</p>
         {/* {JSON.stringify(this.props.store.edit)} */}
-        <Card>
         <table className="edit-table">
           <thead>
             <tr>
@@ -189,7 +189,6 @@ state = {
 
       </tbody>
         </table>
-        </Card>
   
       </div>
       </div>

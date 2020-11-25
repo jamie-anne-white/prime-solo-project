@@ -39,7 +39,6 @@ class UserPage extends Component {
   delete = (results) => {
     console.log('deleted', results.id);
     this.props.dispatch({type: "DELETE_RESULTS", payload: results.id})
-    
     swal({
       title: "Are you sure?",
       text: "this cannot be undone!", 
@@ -102,6 +101,12 @@ class UserPage extends Component {
 
 
               <td className="post_workout_rating">{results.post_workout_rating}</td>
+
+              {/* {results.post_workout_rating === 1 || 2 || 3 ?  
+              <td className="post_workout_rating_low">{results.post_workout_rating}</td>
+              :
+              <td className="alcohol_no">{results.alcohol}</td>
+              } */}
 
               {results.alcohol === "Yes" ?  
               <td className="alcohol_yes">{results.alcohol}</td>
