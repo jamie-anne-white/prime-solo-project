@@ -8,7 +8,6 @@ import { TextField, Button, MenuItem, Card } from '@material-ui/core';
 
 
 
-import './EditWorkout.css';
 import swal from 'sweetalert';
 
 
@@ -113,7 +112,7 @@ state = {
         
             <div>
               <p>Did you workout today?</p>
-                <TextField
+                <TextField 
                     id="workout"
                     select
                     label="---"

@@ -89,15 +89,35 @@ class UserPage extends Component {
 
               <TableCell align="center">{results.date}</TableCell>
 
-              {results.workout === "Yes" ?               
-              <TableCell align="center" className="workout_yes" >{results.workout}</TableCell>
-              :
-              <TableCell align="center" className="workout_no" >{results.workout}</TableCell>
-              }
+              
+                {results.workout === "Yes" ?               
+                <TableCell align="center" className="workout_yes" >{results.workout}</TableCell>
+                :
+                <TableCell align="center" className="workout_no" >{results.workout}</TableCell>
+                }
+              
 
-              <TableCell align="center">{results.workout_rating}</TableCell>
+             
+                {(results.workout_rating === 1 || results.workout_rating === 2) &&
+                  <TableCell align="center" className="workout_rating_min">{results.workout_rating}</TableCell>
+                } 
+                {(results.workout_rating === 3 || results.workout_rating === 4)  &&
+                  <TableCell align="center" className="workout_rating_mid">{results.workout_rating}</TableCell>
+                }
+                {(results.workout_rating === 5 || results.workout_rating === 6)  &&
+                  <TableCell align="center" className="workout_rating_max">{results.workout_rating}</TableCell>
+                }
 
-              <TableCell align="center">{results.post_workout_rating}</TableCell>
+                {(results.post_workout_rating === 1 || results.post_workout_rating === 2) &&
+                  <TableCell align="center" className="post_workout_rating_min">{results.post_workout_rating}</TableCell>
+                } 
+                {(results.post_workout_rating === 3 || results.post_workout_rating === 4)  &&
+                  <TableCell align="center" className="post_workout_rating_mid">{results.post_workout_rating}</TableCell>
+                }
+                {(results.post_workout_rating === 5 || results.post_workout_rating === 6)  &&
+                  <TableCell align="center" className="post_workout_rating_max">{results.post_workout_rating}</TableCell>
+                }
+                
 
 
               {results.alcohol === "Yes" ?               
@@ -126,7 +146,19 @@ class UserPage extends Component {
               }
 
 
-              <TableCell align="center">{results.overall_status}</TableCell>
+                {(results.overall_status === 1 || results.overall_status === 2) &&
+                  <TableCell align="center" className="overall_status_min">{results.overall_status}</TableCell>
+                } 
+                {(results.overall_status === 3 || results.overall_status === 4)  &&
+                  <TableCell align="center" className="overall_status_mid">{results.overall_status}</TableCell>
+                }
+                {(results.overall_status === 5 || results.overall_status === 6)  &&
+                  <TableCell align="center" className="overall_status_max">{results.overall_status}</TableCell>
+                }
+
+
+
+
               <TableCell align="center"><Button variant="contained" color="primary" onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</Button></TableCell>
               <TableCell align="center">
               <Button variant="contained" color="secondary" onClick={()=> this.delete(results)}>Delete</Button>
@@ -139,6 +171,7 @@ class UserPage extends Component {
             </TableBody>
       </Table>
     </TableContainer>
+
 
 
 
