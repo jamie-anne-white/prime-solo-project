@@ -11,7 +11,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 
 
 class UserPage extends Component {
@@ -63,12 +62,13 @@ class UserPage extends Component {
      <>
       <div>
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
+        <h2>Logged Workouts</h2>
         <p>Your ID is: {this.props.store.user.id}</p>
       </div>
 
-      <TableContainer component={Paper}>
-      <Table aria-label="results_table">
-      <TableHead>
+      <TableContainer>
+      <Table aria-label="results_table" id="resultsTable">
+      <TableHead className="resultsTableHead">
           <TableRow>
           <TableCell align="center">Date</TableCell>
           <TableCell align="center">Did you workout?</TableCell>
@@ -127,22 +127,35 @@ class UserPage extends Component {
               }
 
 
-              {results.food === "Yes" ?
-              <TableCell align="center" className="food_yes">{results.food}</TableCell>
-              :
-              <TableCell align="center" className="food_no">{results.food} </TableCell>
+              {results.food === "Yes" &&               
+              <TableCell align="center" className="food_yes" >{results.food}</TableCell>
+              }
+              {results.food === "No" && 
+              <TableCell align="center" className="food_no" >{results.food}</TableCell>
+              }
+              {results.food === "Somewhat" && 
+              <TableCell align="center" className="food_somewhat" >{results.food}</TableCell>
               }
 
-              {results.sleep === "Yes" ?
-              <TableCell align="center" className="sleep_yes">{results.sleep}</TableCell>
-              :
-              <TableCell align="center" className="sleep_no">{results.sleep} </TableCell>
+
+              {results.sleep === "Yes" &&               
+              <TableCell align="center" className="sleep_yes" >{results.sleep}</TableCell>
+              }
+              {results.sleep === "No" && 
+              <TableCell align="center" className="sleep_no" >{results.sleep}</TableCell>
+              }
+              {results.sleep === "Somewhat" && 
+              <TableCell align="center" className="sleep_somewhat" >{results.sleep}</TableCell>
               }
 
-              {results.mindfullness === "Yes" ?
-              <TableCell align="center" className="mindfullness_yes">{results.mindfullness}</TableCell>
-              :
-              <TableCell align="center" className="mindfullness_no">{results.mindfullness} </TableCell>
+              {results.mindfullness === "Yes" &&               
+              <TableCell align="center" className="mindfullness_yes" >{results.mindfullness}</TableCell>
+              }
+              {results.mindfullness === "No" && 
+              <TableCell align="center" className="mindfullness_no" >{results.mindfullness}</TableCell>
+              }
+              {results.mindfullness === "Somewhat" && 
+              <TableCell align="center" className="mindfullness_somewhat" >{results.mindfullness}</TableCell>
               }
 
 

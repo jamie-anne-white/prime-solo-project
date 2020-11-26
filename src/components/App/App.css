@@ -125,21 +125,29 @@ input {
 
 
 
-Table {
+#resultsTable {
   border: 2px solid rgb(127, 129, 127);
-  border-collapse: collapse;
-  text-align: center;
-  padding: 15px;
-  width: 75%;
+  border-collapse: collapse !important;
+  text-align: center !important;
+  padding: 55px !important;
+  width: 90% !important;
+  display: 'flex' !important;
+  margin: auto !important;
+  justify-content: 'center' !important;
 
 }
 
+
 th {
   background-color: #6c907e;
+  font-size: 15px !important;
+  font-weight: bold !important;
 }
 
 th, td {
   border: 2px solid rgb(127, 129, 127);
+  font-size: 20px;
+
 
 } 
 
@@ -160,10 +168,34 @@ th, td {
 
 }
 
-.workout_rating_mid, .post_workout_rating_mid, .overall_status_mid {
+.workout_rating_mid, .post_workout_rating_mid, .overall_status_mid, .food_somewhat, .mindfullness_somewhat, .sleep_somewhat {
   background-color: rgb(216, 215, 168);
 }
 
 .workout_rating_max, .post_workout_rating_max, .overall_status_max {
   background-color: rgb(174, 200, 174);
+}
+
+/* edit workout form */
+
+#paperEdit {
+  height: 950px;
+    width: 650px;
+    margin: 0 auto;
+    padding: 3em;
+    padding-top: 0.5em;
+    background-color: white;
+
+}
+
+.saveButton {
+  margin-top: 2em !important;
+  background-color:#94b4a4 !important;
+ 
+}
+
+#editDate {
+  margin: 1em !important;
+
+
 }

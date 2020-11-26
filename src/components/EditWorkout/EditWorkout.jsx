@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { TextField, Button, MenuItem, Card } from '@material-ui/core';
+import { TextField, Button, MenuItem, Paper, FormControl, InputLabel } from '@material-ui/core';
 
 
 
@@ -84,19 +84,16 @@ state = {
 
     return (
       <>
-
-        <p>EDIT WORKOUT FORM</p>
-        {/* {JSON.stringify(this.props.store.edit)} */}
-
       {this.props.store.edit.map((results) => {
         // this.addWorkout(results)
 
         return(
-          <Card key={results.user_id}>
+          <Paper id="paperEdit" key={results.user_id}>
+            <h1>Edit Workout</h1>
 
             <div>
               <TextField
-                id="date"
+                id="editDate"
                 label="Workout Date"
                 type="date"
                 value={this.props.store.date}
@@ -112,8 +109,12 @@ state = {
         
             <div>
               <p>Did you workout today?</p>
+
+              <FormControl>
+              <InputLabel>Select</InputLabel>
+
                 <TextField 
-                    id="workout"
+                    id="editWorkoutSelect"
                     select
                     label="---"
                     value={this.props.store.workout}
@@ -123,8 +124,10 @@ state = {
                     >
                   <MenuItem value="Yes">Yes</MenuItem>
                   <MenuItem value="No">No</MenuItem>
-
                 </TextField>
+              
+                </FormControl>
+                
             </div>
 
             <div>
@@ -138,9 +141,9 @@ state = {
             </div>
 
             <div>
-              <p>Did you consume alcohol within 24 hours of this workout?</p>
+              <p>Did you meet your personal alcohol within 24 hours of this workout?</p>
                 <TextField
-                  id="alcohol"
+                  id="editAlcoholSelect"
                   select
                   label="---"
                   value={this.props.store.alcohol}
@@ -157,7 +160,7 @@ state = {
             <div>
             <p>Have you met your nutrition goals within the past 24 hours of this workout?</p>
                 <TextField
-                  id="food"
+                  id="editFoodSelect"
                   select
                   label="---"
                   value={this.props.store.food}
@@ -167,6 +170,7 @@ state = {
                   >
                     <MenuItem value="Yes">Yes</MenuItem>
                     <MenuItem value="No">No</MenuItem>
+                    <MenuItem value="Somewhat">Somewhat</MenuItem>
 
                 </TextField>
             </div>
@@ -174,7 +178,7 @@ state = {
             <div>
             <p>Have you met your sleep goals within the past 24 hours of this workout?</p>
                 <TextField
-                  id="sleep"
+                  id="editSleepSelect"
                   select
                   label="---"
                   value={this.props.store.sleep}
@@ -184,6 +188,7 @@ state = {
                   >
                     <MenuItem value="Yes">Yes</MenuItem>
                     <MenuItem value="No">No</MenuItem>
+                    <MenuItem value="Somewhat">Somewhat</MenuItem>
 
                 </TextField>
             </div>
@@ -191,7 +196,7 @@ state = {
             <div>
               <p>Have you met your wellness or meditation goals in the last 24 hours?</p>
                 <TextField
-                  id="mindfullness"
+                  id="editMindfullnessSelect"
                   select
                   label="---"
                   value={this.props.store.mindfullness}
@@ -201,6 +206,7 @@ state = {
                   >
                     <MenuItem value="Yes">Yes</MenuItem>
                     <MenuItem value="No">No</MenuItem>
+                    <MenuItem value="Somewhat">Somewhat</MenuItem>
 
                 </TextField>
             </div>
@@ -213,9 +219,9 @@ state = {
             
             
             
-            <Button onClick ={this.handleSave}> Save </Button>
+            <Button className="saveButton" onClick ={this.handleSave}> Save </Button>
           
-          </Card>
+          </Paper>
 
         
         )
