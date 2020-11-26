@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { TextField, Button, MenuItem, Paper, FormControl, InputLabel } from '@material-ui/core';
+import { TextField, Button, MenuItem, Paper } from '@material-ui/core';
 
 
 
@@ -93,7 +93,7 @@ state = {
 
             <div>
               <TextField
-                id="editDate"
+                id="editDateSelect"
                 label="Workout Date"
                 type="date"
                 value={this.props.store.date}
@@ -107,26 +107,24 @@ state = {
           
 
         
-            <div>
+            <div classname="editWorkout">
               <p>Did you workout today?</p>
 
-              <FormControl>
-              <InputLabel>Select</InputLabel>
+              <TextField
+                id="editWorkoutSelect"
+                select
+                label="Select"
+                value={this.props.store.workout}
+                onChange={(event) => this.handleChange(event, 'workout')}
+                helperText="Please select an option"
+                variant="filled"
+                size="small"
+                required name = "workout"
+        >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
 
-                <TextField 
-                    id="editWorkoutSelect"
-                    select
-                    label="---"
-                    value={this.props.store.workout}
-                    onChange={(event) => this.handleChange(event, 'workout')}
-                    variant="filled"
-                    size="small"
-                    >
-                  <MenuItem value="Yes">Yes</MenuItem>
-                  <MenuItem value="No">No</MenuItem>
-                </TextField>
-              
-                </FormControl>
+            </TextField>
                 
             </div>
 
@@ -141,75 +139,94 @@ state = {
             </div>
 
             <div>
-              <p>Did you meet your personal alcohol within 24 hours of this workout?</p>
-                <TextField
-                  id="editAlcoholSelect"
-                  select
-                  label="---"
-                  value={this.props.store.alcohol}
-                  onChange={(event) => this.handleChange(event, 'alcohol')}
-                  variant="filled"
-                  size="small"
-                  >
-                    <MenuItem value="Yes">Yes</MenuItem>
-                    <MenuItem value="No">No</MenuItem>
-                </TextField>
-            </div>
+          <p>Have you consumed alcohol within the past 24 hours?</p>
+          {/* <FormLabel component="alcohol_form"> Did you consume alcohol within 24 hours of this workout?</FormLabel> */}
+
+            <TextField
+              id="alcohol"
+              select
+              label="Select"
+              value={this.props.store.alcohol}
+              onChange={(event) => this.handleChange(event, 'alcohol')}
+              helperText="Please select an option"
+              variant="filled"
+              size="small"
+              required name = "alcohol"
+              >
+                <MenuItem value="Yes">Yes</MenuItem>
+                <MenuItem value="No">No</MenuItem>
+            </TextField>
+
+        </div>
             
 
-            <div>
-            <p>Have you met your nutrition goals within the past 24 hours of this workout?</p>
-                <TextField
-                  id="editFoodSelect"
-                  select
-                  label="---"
-                  value={this.props.store.food}
-                  onChange={(event) => this.handleChange(event, 'food')}
-                  variant="filled"
-                  size="small"
-                  >
-                    <MenuItem value="Yes">Yes</MenuItem>
-                    <MenuItem value="No">No</MenuItem>
-                    <MenuItem value="Somewhat">Somewhat</MenuItem>
+        <div>
+          <p>Have you met your nutrition goals within the past 24 hours of this workout?</p>
+            <TextField
+              id="food"
+              select
+              label="Select"
+              value={this.props.store.food}
+              onChange={(event) => this.handleChange(event, 'food')}
+              helperText="Please select an option"
+              variant="filled"
+              size="small"
+              required name = "food"
 
-                </TextField>
-            </div>
+              >
+                <MenuItem value="Yes">Yes</MenuItem>
+                <MenuItem value="No">No</MenuItem>
+                <MenuItem value="Somewhat">Somewhat</MenuItem>
+            </TextField>
 
-            <div>
-            <p>Have you met your sleep goals within the past 24 hours of this workout?</p>
-                <TextField
-                  id="editSleepSelect"
-                  select
-                  label="---"
-                  value={this.props.store.sleep}
-                  onChange={(event) => this.handleChange(event, 'sleep')}
-                  variant="filled"
-                  size="small"
-                  >
-                    <MenuItem value="Yes">Yes</MenuItem>
-                    <MenuItem value="No">No</MenuItem>
-                    <MenuItem value="Somewhat">Somewhat</MenuItem>
+        </div>
 
-                </TextField>
-            </div>
+        <div>
+          <p>Have you met your sleep goals within the past 24 hours?</p>
 
-            <div>
-              <p>Have you met your wellness or meditation goals in the last 24 hours?</p>
-                <TextField
-                  id="editMindfullnessSelect"
-                  select
-                  label="---"
-                  value={this.props.store.mindfullness}
-                  onChange={(event) => this.handleChange(event, 'mindfullness')}
-                  variant="filled"
-                  size="small"
-                  >
-                    <MenuItem value="Yes">Yes</MenuItem>
-                    <MenuItem value="No">No</MenuItem>
-                    <MenuItem value="Somewhat">Somewhat</MenuItem>
+            <TextField
+              id="sleep"
+              select
+              label="Select"
+              value={this.props.store.sleep}
+              onChange={(event) => this.handleChange(event, 'sleep')}
+              helperText="Please select an option"
+              variant="filled"
+              size="small"
+              required name = "sleep"
+              >
+                <MenuItem value="Yes">Yes</MenuItem>
+                <MenuItem value="No">No</MenuItem>
+                <MenuItem value="Somewhat">Sometimes</MenuItem>
 
-                </TextField>
-            </div>
+
+            </TextField>
+
+        </div>
+
+
+        <div>
+          <p>Did you practice meditation or wellness today?</p>
+            <TextField
+              id="mindfullness"
+              select
+              label="Select"
+              value={this.props.store.mindfullness}
+              onChange={(event) => this.handleChange(event, 'mindfullness')}
+              helperText="Please select an option"
+              variant="filled"
+              size="small"
+              required name = "mindfullness"
+
+              >
+                <MenuItem value="Yes">Yes</MenuItem>
+                <MenuItem value="No">No</MenuItem>
+                <MenuItem value="Somewhat">Sometimes</MenuItem>
+
+
+            </TextField>
+
+        </div>
 
             <div>
               <p>How do you feel overall or holistically today?</p>

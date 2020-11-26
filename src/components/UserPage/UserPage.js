@@ -87,7 +87,7 @@ class UserPage extends Component {
             {this.props.store.results.map(results => (
             <TableRow key={results.id}>
 
-              <TableCell align="center">{results.date}</TableCell>
+              <TableCell align="center">{results.date.slice(5,7) + '/' + results.date.slice(8,10) + '/' + results.date.slice(0,4)}</TableCell>
 
               
                 {results.workout === "Yes" ?               

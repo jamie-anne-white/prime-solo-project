@@ -178,24 +178,43 @@ th, td {
 
 /* edit workout form */
 
-#paperEdit {
-  height: 950px;
+#paperEdit, #paperAdd {
+  height: 1100px;
     width: 650px;
     margin: 0 auto;
-    padding: 3em;
+    padding: 1.5em;
     padding-top: 0.5em;
     background-color: white;
 
 }
 
-.saveButton {
+#paperAdd {
+  height: 1225px;
+  width: 650px;
+  margin: 0 auto;
+  padding: 1.5em;
+  padding-top: 0.5em;
+  background-color: white;
+
+}
+
+.saveButton, .submitWorkout {
   margin-top: 2em !important;
   background-color:#94b4a4 !important;
  
 }
 
-#editDate {
-  margin: 1em !important;
+#editDateSelect, #addDateSelect {
+  /* margin-bottom: 2em !important; */
+}
+
+.addWorkout, .editWorkout {
+  padding-top: 1.0em !important;
+  padding-bottom: 1.0em !important;
+}
+
+ .addWorkoutRating, .addPostWorkoutRating,.addAlcohol, .addFood, .addSleep,.addMindfullness, .addOverall {
+  padding-bottom: 1.0em !important;
 
 
 }
