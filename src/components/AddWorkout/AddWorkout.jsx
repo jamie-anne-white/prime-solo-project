@@ -11,17 +11,18 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {Paper} from '@material-ui/core';
 
+
+
+
+
+
+
 // import FormHelperText from '@material-ui/core/FormHelperText'; import Select
 // from '@material-ui/core/Select';
 
 import swal from 'sweetalert';
-
 import MenuItem from '@material-ui/core/MenuItem';
 
-// This is one of our simplest components It doesn't have local state, so it can
-// be a function component. It doesn't dispatch any redux actions or display any
-// part of redux state or even care what the redux state is, so it doesn't need
-// 'connect()'
 
 class AddWorkout extends Component {
 
@@ -83,10 +84,9 @@ class AddWorkout extends Component {
             <form onSubmit={this.addNewWorkout}>
 
                 <Paper id="paperAdd">
-                    <h1>Add New Workout</h1>
+                    <h1>Add a New Day</h1>
 
                     <div>
-                        <p>Date</p>
                         <TextField
                             id="addDateSelect"
                             required
@@ -120,7 +120,7 @@ class AddWorkout extends Component {
                     </div>
 
                     <div className="addWorkoutRating">
-                        <FormControl
+                        <FormControl 
                             component="fieldset"
                             onChange={(event => this.setState({workout_rating: event.target.value}))}>
                             <p>
@@ -303,36 +303,42 @@ class AddWorkout extends Component {
                             component="fieldset"
                             onChange={(event => this.setState({overall_status: event.target.value}))}>
                             <p>How do you feel overall today?</p>
-                            <RadioGroup row>
+                            <RadioGroup row className>
                                 <FormControlLabel
                                     value="1"
                                     control={< Radio />}
                                     onChange={(event) => this.handleChange(event, 'overall_status')}
+                                    label="1"
                                     labelPlacement="bottom"/>
                                 <FormControlLabel
                                     value="2"
                                     control={< Radio />}
                                     onChange={(event) => this.handleChange(event, 'overall_status')}
+                                    label="2"
                                     labelPlacement="bottom"/>
                                 <FormControlLabel
                                     value="3"
                                     control={< Radio />}
                                     onChange={(event) => this.handleChange(event, 'overall_status')}
+                                    label="3"
                                     labelPlacement="bottom"/>
                                 <FormControlLabel
                                     value="4"
                                     control={< Radio />}
                                     onChange={(event) => this.handleChange(event, 'overall_status')}
+                                    label="4"
                                     labelPlacement="bottom"/>
                                 <FormControlLabel
                                     value="5"
                                     control={< Radio />}
                                     onChange={(event) => this.handleChange(event, 'overall_status')}
+                                    label="4"
                                     labelPlacement="bottom"/>
                                 <FormControlLabel
                                     value="6"
                                     control={< Radio />}
                                     onChange={(event) => this.handleChange(event, 'overall_status')}
+                                    label="5"
                                     labelPlacement="bottom"/>
                             </RadioGroup>
                         </FormControl>

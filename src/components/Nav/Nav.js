@@ -36,7 +36,7 @@ const Nav = (props) => {
             </Link> */}
 
             <Link className="nav-link" to="/add">
-              Add Workout
+              Add a New Day
             </Link>
 
             {/* <Link className="nav-link" to="/edit">
