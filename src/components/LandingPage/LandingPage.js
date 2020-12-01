@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import Paper from '@material-ui/core/Paper';
+
 
 import './LandingPage.css';
 
@@ -23,11 +25,19 @@ class LandingPage extends Component {
 
         <div className="grid">
           <div className="grid-col grid-col_8">
-            <p>
-              This will have an overview of what Whippy Wellness is all about!
-            </p>
+            <Paper className="landing_card">
+              Do you find yourself working out with different results each and everyday? 
+              Maybe it is lifestyle choices you make! 
+              Track your daily habits to see how they impact your workouts as well as your overall, holistic wellbeing. 
+            
+            
+            
+            
+            
+            </Paper>
 
             <p>
+              
            
             </p>
 

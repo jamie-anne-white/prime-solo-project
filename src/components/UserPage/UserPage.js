@@ -70,7 +70,7 @@ class UserPage extends Component {
       
       <TableContainer className="resultsTableContainer">
       <Paper className="resultsPaper">
-        <h1>Logged Workouts</h1>
+        <h1>Logged Days</h1>
       <Table aria-label="results_table" id="resultsTable">
       <TableHead className="resultsTableHead">
           <TableRow className="resultsTableRow">
