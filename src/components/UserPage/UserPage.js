@@ -70,7 +70,7 @@ class UserPage extends Component {
       
       <TableContainer className="resultsTableContainer">
       <Paper className="resultsPaper">
-        <h1>Logged Days</h1>
+        <div className="header"><h1>Logged Days</h1></div>
       <Table aria-label="results_table" id="resultsTable">
       <TableHead className="resultsTableHead">
           <TableRow className="resultsTableRow">
@@ -176,9 +176,9 @@ class UserPage extends Component {
 
 
 
-              <TableCell align="center"><Button variant="contained" color="primary" onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</Button></TableCell>
+              <TableCell align="center"><Button variant="contained" className="editbtn" onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</Button></TableCell>
               <TableCell align="center">
-              <Button variant="contained" color="secondary" onClick={()=> this.delete(results)}>Delete</Button>
+              <Button variant="contained" className="deleteBtn" onClick={()=> this.delete(results)}>Delete</Button>
               </TableCell>
 
 

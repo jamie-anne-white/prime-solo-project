@@ -30,10 +30,10 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
+  border-color: #94b4a4;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
+  background-color: #94b4a4;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -149,13 +149,32 @@ input {
 
 .resultsPaper {
   height: 100%;
-  width: 87%;
+  width: 80%;
   margin: 0 auto;
   padding: 5%;
   padding-top: 1%;
   background-color: white;
   justify-content: 'center' !important;
 
+}
+
+.header {
+  justify-content: 'center' !important;
+
+
+}
+
+.landing_paper {
+  padding: 15px;
+      margin: 0 auto;
+      padding: 2em;
+      padding-top: 2em;
+      background-color: white;
+      width: 80%;
+      justify-content: 'center' !important;
+
+  
+  
 }
 
 .resultsTableBody tr {
@@ -233,6 +252,15 @@ th {
   margin-top: 2em !important;
   background-color:#94b4a4 !important;
  
+}
+
+.editbtn {
+  background-color:#94b4a4 !important;
+}
+
+.deleteBtn {
+  background-color: rgb(221, 180, 180) !important;
+
 }
 
 #editDateSelect, #addDateSelect {

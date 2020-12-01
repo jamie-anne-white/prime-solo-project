@@ -332,13 +332,13 @@ class AddWorkout extends Component {
                                     value="5"
                                     control={< Radio />}
                                     onChange={(event) => this.handleChange(event, 'overall_status')}
-                                    label="4"
+                                    label="5"
                                     labelPlacement="bottom"/>
                                 <FormControlLabel
                                     value="6"
                                     control={< Radio />}
                                     onChange={(event) => this.handleChange(event, 'overall_status')}
-                                    label="5"
+                                    label="6"
                                     labelPlacement="bottom"/>
                             </RadioGroup>
                         </FormControl>
