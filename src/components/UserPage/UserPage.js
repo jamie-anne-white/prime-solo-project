@@ -11,6 +11,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
 
 
 class UserPage extends Component {
@@ -60,17 +62,19 @@ class UserPage extends Component {
 
     return (
      <>
-      <div>
+      {/* <div>
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
-        <h2>Logged Workouts</h2>
         <p>Your ID is: {this.props.store.user.id}</p>
-      </div>
+      </div> */}
 
-      <TableContainer>
+      
+      <TableContainer className="resultsTableContainer">
+      <Paper className="resultsPaper">
+        <div className="header"><h1>Logged Days</h1></div>
       <Table aria-label="results_table" id="resultsTable">
       <TableHead className="resultsTableHead">
-          <TableRow>
-          <TableCell align="center">Date</TableCell>
+          <TableRow className="resultsTableRow">
+          <TableCell className="resultsTableCell" align="center">Date</TableCell>
           <TableCell align="center">Did you workout?</TableCell>
           <TableCell align="center">Workout Rating</TableCell>
           <TableCell align="center">Post Workout Rating</TableCell>
@@ -83,7 +87,7 @@ class UserPage extends Component {
           <TableCell align="center">Delete</TableCell>
           </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="resultsTableBody">
             {this.props.store.results.map(results => (
             <TableRow key={results.id}>
 
@@ -172,9 +176,9 @@ class UserPage extends Component {
 
 
 
-              <TableCell align="center"><Button variant="contained" color="primary" onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</Button></TableCell>
+              <TableCell align="center"><Button variant="contained" className="editbtn" onClick={() => this.props.history.push(`/edit/${results.id}`)}>Edit</Button></TableCell>
               <TableCell align="center">
-              <Button variant="contained" color="secondary" onClick={()=> this.delete(results)}>Delete</Button>
+              <Button variant="contained" className="deleteBtn" onClick={()=> this.delete(results)}>Delete</Button>
               </TableCell>
 
 
@@ -183,7 +187,9 @@ class UserPage extends Component {
             ))}
             </TableBody>
       </Table>
+      </Paper>
     </TableContainer>
+
 
 
 
